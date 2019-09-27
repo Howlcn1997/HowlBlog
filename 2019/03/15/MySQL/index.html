@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>MySQL | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="MySQL1、确保已安装wamp并且启动成功详情请见wamp环境搭建 2、下载navicat premium文件 -&amp;gt; 新建连接 点击自己新建的链接，新建数据库  字符集uft8  排序规则utf8_bin 3、在项目文件夹中安装mySQL12npm init -ynpm install mysqljs/mysql 4、在服务器js文件中使用mysql包引入mysql包1const mysq">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/03/15/MySQL/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="MySQL1、确保已安装wamp并且启动成功详情请见wamp环境搭建 2、下载navicat premium文件 -&amp;gt; 新建连接 点击自己新建的链接，新建数据库  字符集uft8  排序规则utf8_bin 3、在项目文件夹中安装mySQL12npm init -ynpm install mysqljs/mysql 4、在服务器js文件中使用mysql包引入mysql包1const mysq">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:updated_time" content="2019-09-02T03:07:04.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL">
+<meta name="twitter:description" content="MySQL1、确保已安装wamp并且启动成功详情请见wamp环境搭建 2、下载navicat premium文件 -&amp;gt; 新建连接 点击自己新建的链接，新建数据库  字符集uft8  排序规则utf8_bin 3、在项目文件夹中安装mySQL12npm init -ynpm install mysqljs/mysql 4、在服务器js文件中使用mysql包引入mysql包1const mysq">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      MySQL
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-15
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="1、确保已安装wamp并且启动成功"><a href="#1、确保已安装wamp并且启动成功" class="headerlink" title="1、确保已安装wamp并且启动成功"></a>1、确保已安装wamp并且启动成功</h2><p>详情请见<a href="https://howlcn.github.io/2019/05/12/wamp%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_blank" rel="noopener">wamp环境搭建</a></p>
+<h2 id="2、下载navicat-premium"><a href="#2、下载navicat-premium" class="headerlink" title="2、下载navicat premium"></a>2、下载navicat premium</h2><p>文件 -&gt; 新建连接</p>
+<p>点击自己新建的链接，新建数据库  字符集uft8  排序规则utf8_bin</p>
+<h2 id="3、在项目文件夹中安装mySQL"><a href="#3、在项目文件夹中安装mySQL" class="headerlink" title="3、在项目文件夹中安装mySQL"></a>3、在项目文件夹中安装mySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm install mysqljs/mysql</span><br></pre></td></tr></table></figure>
+<h2 id="4、在服务器js文件中使用mysql包"><a href="#4、在服务器js文件中使用mysql包" class="headerlink" title="4、在服务器js文件中使用mysql包"></a>4、在服务器js文件中使用mysql包</h2><h3 id="引入mysql包"><a href="#引入mysql包" class="headerlink" title="引入mysql包"></a>引入mysql包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const mysql = require(&apos;mysql&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="创建数据库链接"><a href="#创建数据库链接" class="headerlink" title="创建数据库链接"></a>创建数据库链接</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> connection = mysql.createConnection(&#123;</span><br><span class="line">	host: <span class="string">'localhost'</span>, <span class="comment">//数据库所在的服务器的域名（或ip地址）</span></span><br><span class="line">	user: <span class="string">'me'</span>, <span class="comment">//登录数据库的账号</span></span><br><span class="line">	password: <span class="string">'secret'</span>, <span class="comment">//登陆数据库的密码</span></span><br><span class="line">	database: <span class="string">'book'</span> <span class="comment">//数据库的名称</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="执行链接操作"><a href="#执行链接操作" class="headerlink" title="执行链接操作"></a>执行链接操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.connect();</span><br></pre></td></tr></table></figure>
+<h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><p>数据库的操作是异步的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'数据库操作语句'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果</span></span><br><span class="line">	<span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'The solution is:'</span>,results[<span class="number">0</span>].solution);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="关闭数据库"><a href="#关闭数据库" class="headerlink" title="关闭数据库"></a>关闭数据库</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.end();</span><br></pre></td></tr></table></figure>
+<h2 id="数据库常用语句"><a href="#数据库常用语句" class="headerlink" title="数据库常用语句"></a>数据库常用语句</h2><p>先给出代码大概框架</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> connection = mysql.createConnection(&#123;</span><br><span class="line">    host: <span class="string">'localhost'</span>, <span class="comment">//数据库所在的服务器的域名（或ip地址）</span></span><br><span class="line">    user: <span class="string">'root'</span>, <span class="comment">//登录数据库的账号</span></span><br><span class="line">    password: <span class="string">''</span>, <span class="comment">//登陆数据库的密码</span></span><br><span class="line">    database: <span class="string">'book'</span> <span class="comment">//数据库的名称</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.connect();</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处开始进行数据库数据操作**********************之后的代码只有此处不同</span></span><br><span class="line"><span class="comment">// ？ 是为了给后面的数据进行填充</span></span><br><span class="line"><span class="keyword">let</span> sql = <span class="string">'insert into book set ?'</span>;</span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'百年孤独'</span>,</span><br><span class="line">    author: <span class="string">'加西亚·马尔克斯'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果 是个对象</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="keyword">if</span>(results.affectedRows == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据插入成功！'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处结束数据库数据操作************************</span></span><br><span class="line">connection.end();</span><br></pre></td></tr></table></figure>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ？ 是为了给后面的数据进行填充</span></span><br><span class="line"><span class="keyword">let</span> sql = <span class="string">'insert into book set ?'</span>;</span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'百年孤独'</span>,</span><br><span class="line">    author: <span class="string">'加西亚·马尔克斯'</span></span><br><span class="line">&#125;;</span><br><span class="line">connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="keyword">if</span>(results.affectedRows == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据插入成功！'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sql = <span class="string">'delete from book where id=?'</span>;</span><br><span class="line"><span class="keyword">let</span> data = [<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="keyword">if</span>(results.affectedRows == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据删除成功！'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sql = <span class="string">'update book set name=?,author=? where id=?'</span>;</span><br><span class="line"><span class="keyword">let</span> data = [<span class="string">'红楼梦'</span>,<span class="string">'曹雪芹'</span>,<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="keyword">if</span>(results.affectedRows == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据更新成功！'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//let sql = 'select * from book'; // * 查询范围是全部数据</span></span><br><span class="line"><span class="comment">//let data = null;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sql = <span class="string">'select * from book where id = ?'</span>;  <span class="comment">//从所有数据中查询id为？的数据</span></span><br><span class="line"><span class="keyword">let</span> data = [<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123; <span class="comment">//results 数据库语句执行完后的结果</span></span><br><span class="line">	<span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="built_in">console</span>.log(results[<span class="number">0</span>].name);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>不难发现对数据的增删改查在代码层面是类似的。</p>
+<h3 id="封装对数据库的操作"><a href="#封装对数据库的操作" class="headerlink" title="封装对数据库的操作"></a>封装对数据库的操作</h3><p>新建一个db.js文件，此js中的代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//当sql是插入操作时，data需要是一个对象</span></span><br><span class="line"><span class="comment">//当sql是删改查时，data是一个数组数组中的数据与表中的字段顺序要一一对应</span></span><br><span class="line">exports.base = <span class="function">(<span class="params">sql,data,callback</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> connection = mysql.createConnection(&#123;</span><br><span class="line">        host: <span class="string">'localhost'</span>,</span><br><span class="line">        user: <span class="string">'root'</span>,</span><br><span class="line">        password: <span class="string">''</span>,</span><br><span class="line">        database: <span class="string">'book'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    connection.connect();</span><br><span class="line">    connection.query(sql,data,<span class="function"><span class="keyword">function</span>(<span class="params">error,results,fields</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(error) <span class="keyword">throw</span> error;</span><br><span class="line">        callback(results);</span><br><span class="line">    &#125;);</span><br><span class="line">    connection.end();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月02日 11:07</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/15/MySQL/" title="MySQL">https://HowlCN1997.github.io/2019/03/15/MySQL/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/03/15/MySQL/&title=《MySQL》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560597796142&di=b01b9067da61419383186fe91a299fd2&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-234a2c42c7be96e4070b9f97e5f9047f_1200x500.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/03/15/MySQL/&title=《MySQL》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/03/15/MySQL/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL》 — Howl&url=https://HowlCN1997.github.io/2019/03/15/MySQL/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/03/15/MySQL/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/03/15/MySQL/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/笔记/" class="color3">笔记</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySQL"><span class="post-toc-text">MySQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、确保已安装wamp并且启动成功"><span class="post-toc-text">1、确保已安装wamp并且启动成功</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、下载navicat-premium"><span class="post-toc-text">2、下载navicat premium</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3、在项目文件夹中安装mySQL"><span class="post-toc-text">3、在项目文件夹中安装mySQL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、在服务器js文件中使用mysql包"><span class="post-toc-text">4、在服务器js文件中使用mysql包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入mysql包"><span class="post-toc-text">引入mysql包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建数据库链接"><span class="post-toc-text">创建数据库链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#执行链接操作"><span class="post-toc-text">执行链接操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作数据库"><span class="post-toc-text">操作数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭数据库"><span class="post-toc-text">关闭数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库常用语句"><span class="post-toc-text">数据库常用语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增"><span class="post-toc-text">增</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删"><span class="post-toc-text">删</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#改"><span class="post-toc-text">改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查"><span class="post-toc-text">查</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#封装对数据库的操作"><span class="post-toc-text">封装对数据库的操作</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/03/16/MongoDB/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          MongoDB
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/03/11/React-Native打包成apk/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">React-Native APK发行</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

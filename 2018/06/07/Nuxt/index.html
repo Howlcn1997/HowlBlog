@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Nuxt | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="Nuxt一、简介​    Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染(SSR)的 Vue 应用提供了极其便利的开发体验。 ​    Vue.js是开发SPA单页面应用的，传统的SPA应用是将bundle.js从服务端获取，然后在客户端解析并挂载到dom。 ​    Nuxt这个框架是用Vue开发多页应用，并在服务端渲染。我们可以将组件渲染为服务器端的 HTML 字符串，将它">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuxt">
+<meta property="og:url" content="https://HowlCN1997.github.io/2018/06/07/Nuxt/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="Nuxt一、简介​    Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染(SSR)的 Vue 应用提供了极其便利的开发体验。 ​    Vue.js是开发SPA单页面应用的，传统的SPA应用是将bundle.js从服务端获取，然后在客户端解析并挂载到dom。 ​    Nuxt这个框架是用Vue开发多页应用，并在服务端渲染。我们可以将组件渲染为服务器端的 HTML 字符串，将它">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/06/07/Nuxt/noNuxt.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/06/07/Nuxt/nuxt.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/06/07/Nuxt/1546049173524.png">
+<meta property="og:image" content="http://5b0988e595225.cdn.sohucs.com/images/20180524/92672015b4914784ae5a800c4a655e25.jpeg">
+<meta property="og:updated_time" content="2019-09-02T03:22:44.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nuxt">
+<meta name="twitter:description" content="Nuxt一、简介​    Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染(SSR)的 Vue 应用提供了极其便利的开发体验。 ​    Vue.js是开发SPA单页面应用的，传统的SPA应用是将bundle.js从服务端获取，然后在客户端解析并挂载到dom。 ​    Nuxt这个框架是用Vue开发多页应用，并在服务端渲染。我们可以将组件渲染为服务器端的 HTML 字符串，将它">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2018/06/07/Nuxt/noNuxt.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Nuxt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Nuxt
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-06-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Nuxt"><a href="#Nuxt" class="headerlink" title="Nuxt"></a>Nuxt</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>​    Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染(SSR)的 Vue 应用提供了极其便利的开发体验。</p>
+<p>​    Vue.js是开发SPA单页面应用的，传统的SPA应用是将bundle.js从服务端获取，然后在客户端解析并挂载到dom。</p>
+<p>​    Nuxt这个框架是用Vue开发多页应用，并在服务端渲染。我们可以将组件渲染为服务器端的 HTML 字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。</p>
+<p>​    Nuxt适合做新闻、博客、电影、咨询这样的需要搜索引擎提供流量的项目。如果你要做到是移动端项目，就没有必要用nuxt这个框架了。</p>
+<p>Nuxt是基于Vue.js的服务端渲染框架，可以很好的解决SPA应用程序的首次加载问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Nuxt.js有如下特点：</span><br><span class="line">Vue 2 ： nuxt是基于Vue2开发的</span><br><span class="line">Vue Router  ： nuxt整合了路由功能，配置非常简单</span><br><span class="line">VueX  ： 支持vuex</span><br><span class="line">Vue Server Renderer  ： 支持服务端渲染</span><br><span class="line">Vue-meta  ： 支持meta标签配置</span><br></pre></td></tr></table></figure>
+<p>Nuxt机制图示</p>
+<p>未使用Nuxt：</p>
+<p><img src="/2018/06/07/Nuxt/noNuxt.png" alt="noNuxt"></p>
+<p>使用Nuxt：</p>
+<p><img src="/2018/06/07/Nuxt/nuxt.png" alt="nuxt"></p>
+<h2 id="二、创建Nuxt项目"><a href="#二、创建Nuxt项目" class="headerlink" title="二、创建Nuxt项目"></a>二、创建Nuxt项目</h2><p><a href="https://zh.nuxtjs.org/guide/installation/#新手模板" target="_blank" rel="noopener">新手模板</a></p>
+<p>确保安装了npx（npx在NPM版本5.2.0默认安装了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-nuxt-app &lt;项目名&gt;</span><br></pre></td></tr></table></figure>
+<p>或者使用yarn:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn create nuxt-app &lt;项目名&gt;</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:3000</span><br></pre></td></tr></table></figure>
+<h2 id="三、Nuxt基本使用"><a href="#三、Nuxt基本使用" class="headerlink" title="三、Nuxt基本使用"></a>三、Nuxt基本使用</h2><h3 id="3-1-路由"><a href="#3-1-路由" class="headerlink" title="3.1 路由"></a>3.1 路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//pages文件夹下面，文件名即路由</span><br><span class="line"></span><br><span class="line">#1.pages下新建search.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    这是search页面</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//2.index.vue使用路由 此处的search就是所创建的search.vue的文件名</span><br><span class="line">&lt;nuxt-link to=&quot;/search&quot;&gt;到search页面&lt;/nuxt-link&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-嵌套子模版"><a href="#3-2-嵌套子模版" class="headerlink" title="3.2 嵌套子模版"></a>3.2 嵌套子模版</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#index.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">      &lt;section class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &lt;logo/&gt;</span><br><span class="line">             &lt;/div&gt;</span><br><span class="line">      &lt;/section&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Logo from &apos;~/components/Logo.vue&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Logo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-layouts布局文件"><a href="#3-3-layouts布局文件" class="headerlink" title="3.3 layouts布局文件"></a>3.3 layouts布局文件</h3><p>​    默认情况下所有的页面都会默认使用layouts下面default.vue这个布局文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#default.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;头部&lt;/h1&gt;</span><br><span class="line">    &lt;!--nuxt就相当于 router-view--&gt;</span><br><span class="line">    &lt;nuxt/&gt;                     </span><br><span class="line">    &lt;h1&gt;尾巴&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>当然也可以创建自定义的布局文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//自定义布局文件</span><br><span class="line">//1.layouts下新建一个user.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;用户页面头部&lt;/h1&gt;</span><br><span class="line">    &lt;nuxt/&gt;</span><br><span class="line">    &lt;h1&gt;用户页面底部&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;css&quot; scoped&gt;</span><br><span class="line">  h1&#123;</span><br><span class="line">    color:green</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">//2.pages下的search.vue指定使用哪个布局文件</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default&#123;</span><br><span class="line">    layout:&quot;user&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-全局CSS文件"><a href="#3-4-全局CSS文件" class="headerlink" title="3.4 全局CSS文件"></a>3.4 全局CSS文件</h3><p>​    此css 文件将在所有组件中自动生效</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#1.在assets下新建css/main.css</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#2</span>.修改<span class="selector-tag">nuxt</span><span class="selector-class">.config</span><span class="selector-class">.css</span>配置文件后</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">** global css</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">css: [</span><br><span class="line">    'element-ui/lib/theme-chalk/index.css',</span><br><span class="line">    '~assets/css/main.css'</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#3</span>.重启服务(配置文件的修改，重启后才能生效)</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-Vuex的使用"><a href="#3-5-Vuex的使用" class="headerlink" title="3.5 Vuex的使用"></a>3.5 Vuex的使用</h3><p>​        在nuxt中使用vuex的时候无需new Vue.Store实例，nuxt会帮我们自动创建。默认情况下，会使用index.js这个store。</p>
+<p>​        每次修改增加Vuex时要重启服务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#1.store/index.js</span><br><span class="line"><span class="comment">//state存放数据</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  list: [<span class="string">'a'</span>,<span class="string">'b'</span>],</span><br><span class="line">  user:&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//修改state</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  increment (state,text) &#123;</span><br><span class="line">    state.list.push(text);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//异步提交mutations</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> actions = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#2.store/city.js</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  list: [<span class="string">'c'</span>,<span class="string">'d'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  increment (state,text) &#123;</span><br><span class="line">    state.list.push(text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在vue文件中使用vuex</p>
+<ol>
+<li>使用store/index.js中的state时 <code>$store.state.list</code></li>
+<li>使用store/city.js中的state时 <code>$store.state.city.list</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#3.pages/city.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    Page is city</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">        v-for=&quot;(item,idx) in $store.state.list&quot;</span><br><span class="line">        :key=&quot;idx&quot;&gt; &#123;&#123; item &#125;&#125; </span><br><span class="line">       &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">      &lt;input</span><br><span class="line">        type=&quot;button&quot;</span><br><span class="line">        value=&quot;增加信息index&quot;</span><br><span class="line">        @click=&quot;addIndex&quot;&gt;</span><br><span class="line"></span><br><span class="line">      &lt;li</span><br><span class="line">        v-for=&quot;(item,idx) in $store.state.city.list&quot;</span><br><span class="line">        :key=&quot;idx&quot;&gt; &#123;&#123; item &#125;&#125; </span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;input</span><br><span class="line">      type=&quot;button&quot;</span><br><span class="line">      value=&quot;增加信息city&quot;</span><br><span class="line">      @click=&quot;addCity&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  import axios from &quot;axios&quot;</span><br><span class="line">  export default&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        list:[]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      addIndex()&#123;</span><br><span class="line">        this.$store.commit(&apos;increment&apos;, &quot;kk&quot;)</span><br><span class="line">      &#125;,</span><br><span class="line">      addCity()&#123;</span><br><span class="line">        this.$store.commit(&apos;city/increment&apos;, &quot;jj&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="四、SPA-SEO-SSR"><a href="#四、SPA-SEO-SSR" class="headerlink" title="四、SPA\SEO\SSR"></a>四、SPA\SEO\SSR</h2><h3 id="4-1-SPA-单页面应用"><a href="#4-1-SPA-单页面应用" class="headerlink" title="4.1  SPA:单页面应用"></a>4.1  SPA:单页面应用</h3><blockquote>
+<p>SPA 时代，主要是在客户端端使用了<code>history</code>或<code>hash</code>（主要是为了低版本浏览器的兼容）API，在首次请求经服务端路由输出整个应用程序后，接下来的路由都由前端掌控了，前端通过路由作为中心枢纽控制一系列页面（组件）的渲染(DOM的生成)加载和数据交互。</p>
+</blockquote>
+<p>优点：</p>
+<ol>
+<li>页面之间的切换非常快</li>
+<li>一定程度减少了后端服务器的压力</li>
+<li>实现前后端分离，后端程序只需要提供api，不需要客户端到底是web端还是手机等</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>首屏打开速度很慢</li>
+<li>不利于SEO搜索引擎优化</li>
+</ol>
+<h3 id="4-2-SEO-搜索引擎优化"><a href="#4-2-SEO-搜索引擎优化" class="headerlink" title="4.2 SEO:搜索引擎优化"></a>4.2 SEO:搜索引擎优化</h3><blockquote>
+<p>SEO是一种通过了解搜索引擎的运作规则（如何抓取网站页面，如何索引以及如何根据特定的关键字展现搜索结果排序等）来调整网站，以提高该网站在搜索引擎中某些关键词的搜索结果排名。</p>
+<p>由于SPA使用Ajax动态获取数据，很难保证搜索引擎的正常爬取，并且有些搜索引擎不支持js和Ajax获取的数据，因此SSR诞生</p>
+</blockquote>
+<h3 id="4-3-SSR-服务器端渲染"><a href="#4-3-SSR-服务器端渲染" class="headerlink" title="4.3 SSR:服务器端渲染"></a>4.3 SSR:服务器端渲染</h3><blockquote>
+<p>为了解决SPA不支持SEO的问题，我们也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送到浏览器，但是这样的HTML页面还不具备交互能力，所以还需要与SPA框架配合，在浏览器上“混合”成可交互的应用程序。</p>
+</blockquote>
+<p>基本流程：当客户端向服务器发送请求后，web服务器根据路由拿到对应数据渲染并输出，且输出部分中包含两部分：</p>
+<ol>
+<li>路由页对应的页面及已渲染好的数据（解决首屏加载）</li>
+<li>完整的SPA程序代码 （本地路由跳转，而不请求服务器）</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>更好的 SEO（搜索引擎爬虫抓取工具可以直接查看完全渲染的页面）</li>
+<li>更快的内容到达时间 （不用等待所有的JS都下载完成，浏览器便能显示比较完整的页面了）</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>占用更多的cpu和内存资源</li>
+<li>一些常用的浏览器的api可能无法正常使用 （如：window，document，alert）</li>
+<li>开发调试会有一些麻烦 （因为涉及到了浏览器及服务器，对于SPA的一些组件的声明周期的管理会变得复杂）</li>
+</ol>
+<h3 id="4-4-Nuxt对SSR支持"><a href="#4-4-Nuxt对SSR支持" class="headerlink" title="4.4 Nuxt对SSR支持"></a>4.4 Nuxt对SSR支持</h3><blockquote>
+<p>从头搭建一个服务端渲染的应用是相当复杂的。幸运的是，我们有一个优秀的社区项目 <a href="https://nuxtjs.org/" target="_blank" rel="noopener">Nuxt.js</a> 让这一切变得非常简单。Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染的 Vue 应用提供了极其便利的开发体验。</p>
+<p>Nuxt.js 是使用 Webpack 和 Node.js 进行封装的基于Vue的SSR框架，预设了利用Vue.js开发<strong>服务端渲染</strong>的应用所需要的各种配置，使用它你可以不需要自己搭建一套 SSR 程序，而是通过其约定好的文件结构和API就可以实现一个首屏渲染的 Web 应用。</p>
+<p>Nuxt.js 主要关注的是应用的 UI渲染。</p>
+</blockquote>
+<p><a href="https://juejin.im/post/58ff960ba22b9d0065b722cd" target="_blank" rel="noopener">实现基于 Nuxt.js 的 SSR 应用</a></p>
+<h2 id="五、数据预取"><a href="#五、数据预取" class="headerlink" title="五、数据预取"></a>五、数据预取</h2><h3 id="5-1-准备服务器接口"><a href="#5-1-准备服务器接口" class="headerlink" title="5.1 准备服务器接口"></a>5.1 准备服务器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#1.server/interface/city.js</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line">router.get(<span class="string">'/info'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> res.status(<span class="number">200</span>).json([<span class="string">'北京'</span>,<span class="string">'天津'</span>])</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br><span class="line"></span><br><span class="line">#2.server/index.js</span><br><span class="line"><span class="keyword">const</span> cityInterface = <span class="built_in">require</span>(<span class="string">"./interface/city"</span>)</span><br><span class="line"><span class="comment">//在app.use(nuxt.render)上面添加app.use("/city",cityInterface)</span></span><br><span class="line">app.use(<span class="string">"/city"</span>,cityInterface);</span><br><span class="line">app.use(nuxt.render)</span><br><span class="line"></span><br><span class="line">#.重启服务</span><br><span class="line">localhost:<span class="number">3000</span>/city/info  测试接口</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-不适用数据预取"><a href="#5-2-不适用数据预取" class="headerlink" title="5.2 不适用数据预取"></a>5.2 不适用数据预取</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#1.客户端pages下新建city.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    Page is city</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">        v-<span class="keyword">for</span>=<span class="string">"(item,idx) in list"</span></span><br><span class="line">        :key=<span class="string">"idx"</span>&gt; &#123;&#123; item &#125;&#125; &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        list:[]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//async表示方法返回一个Promise</span></span><br><span class="line">    <span class="comment">//await 同步等待</span></span><br><span class="line">    <span class="keyword">async</span> mounted()&#123;</span><br><span class="line">      <span class="keyword">let</span> &#123;status,data&#125; = <span class="keyword">await</span> axios.get(<span class="string">"/city/info"</span>);</span><br><span class="line">      <span class="keyword">this</span>.list = data;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.list);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-3-Nuxt-js的工作流"><a href="#5-3-Nuxt-js的工作流" class="headerlink" title="5.3 Nuxt.js的工作流"></a>5.3 Nuxt.js的工作流</h3><p><img src="/2018/06/07/Nuxt/1546049173524.png" alt="1546049173524"></p>
+<ul>
+<li><p>nuxtServerInit：如果在状态树(store)中指定了 <code>nuxtServerInit</code> 方法，Nuxt.js 调用它的时候会将页面的上下文对象作为第2个参数传给它（仅在服务端调用）。当我们想将服务端的一些数据传到客户端时，这个方法是非常好用的  </p>
+</li>
+<li><p>middleware：中间件允许您定义一个自定义函数运行在一个页面或一组页面渲染之前，服务端首屏渲染和路由跳转前均执行对应中间件。可以用作页面跳转时验证用户信息操作(登陆拦截)。</p>
+</li>
+<li><p>asyncData会在组件加载前（限于页面组件）调用，可以在<strong>服务端首屏渲染或者在路由跳转时执行</strong>，专门用来请求数据，Nuxt.js 会将 <code>asyncData</code> 返回的数据融合组件 <code>data</code> 方法返回的数据一并返回给当前组件。asyncData应该是用于影响SEO的内容，也就是需要让爬虫读取的内容。</p>
+</li>
+</ul>
+<h3 id="5-4-服务端数据预取"><a href="#5-4-服务端数据预取" class="headerlink" title="5.4 服务端数据预取"></a>5.4 服务端数据预取</h3><h4 id="nuxtServerInit"><a href="#nuxtServerInit" class="headerlink" title="nuxtServerInit"></a>nuxtServerInit</h4><blockquote>
+<p>nuxtServerInit可以将服务端的数据通过vuex同步到客户端，该方法仅会在服务端首屏渲染时执行</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#store/index.js</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  list: [],</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  setlist (state,text) &#123;</span><br><span class="line">    text.forEach(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">      state.list.push(item)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> actions = &#123;</span><br><span class="line">  <span class="comment">//将菜单信息写入到vuex实例中</span></span><br><span class="line">  <span class="keyword">async</span> nuxtServerInit (&#123; commit &#125;, &#123; req ,app &#125;) &#123;</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">let</span> &#123;status, data&#125; = <span class="keyword">await</span> app.$axios.get(<span class="string">"/city/info"</span>);</span><br><span class="line">      commit(<span class="string">'setlist'</span>, data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#2.pages/city.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    Page is city</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">        v-<span class="keyword">for</span>=<span class="string">"(item,idx) in $store.state.list"</span></span><br><span class="line">        :key=<span class="string">"idx"</span>&gt; &#123;&#123; item &#125;&#125; &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="asyncData和fetch方法"><a href="#asyncData和fetch方法" class="headerlink" title="asyncData和fetch方法"></a>asyncData和fetch方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用asyncData进行ssr渲染</span></span><br><span class="line"><span class="keyword">async</span> asyncData()&#123;</span><br><span class="line">    <span class="comment">//给data取别名，请求网址写全，因为在刷新浏览器的时候需要全路径请求服务器</span></span><br><span class="line">    <span class="keyword">let</span> &#123;status,<span class="attr">data</span>:list&#125; = <span class="keyword">await</span> axios.get(<span class="string">"http://127.0.0.1:3000/city/info"</span>);</span><br><span class="line">    <span class="keyword">if</span>(status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="comment">//这边不能使用this.list = list,因为获取不到this</span></span><br><span class="line">        <span class="comment">//通过return给页面返回数据</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            list</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> fetch (&#123; store, params &#125;)&#123;</span><br><span class="line">      <span class="comment">//当页面加载时触发可以执行请求来触发action来修改state</span></span><br><span class="line">      <span class="comment">//不可以return数据给页面</span></span><br><span class="line">      <span class="comment">//页面可以从this.$store中获取action修改的state</span></span><br><span class="line">      <span class="keyword">let</span> &#123;status,<span class="attr">data</span>:list&#125; = <span class="keyword">await</span> axios.get(<span class="string">"http://127.0.0.1:3000/city/info"</span>);</span><br><span class="line">      store.commit(<span class="string">'setlist'</span>, list)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font color="red">注意点：asyncData 和 fetch都只能够在页面组件中使用，如果想要在页面组件的子组件中使用ssr，可以使用nuxtServerInit<br>#注意点：由于 asyncData方法是在组件初始化前被调用的，所以在方法内是没有办法通过this来引用组件的实例。<br>#注意点：当用户请求页面时候服务端会先使用SSR来生成对应的页面文档结构，而在用户切换路由则是使用了SPA的模式。这意味着如果用户刷新页面，asyncData方法会在服务端执行；如果用户通过nuxt-link路由导航到当前页面，asyncData会在客户端执行</font>
+
+<h3 id="5-5客户端数据预取"><a href="#5-5客户端数据预取" class="headerlink" title="5.5客户端数据预取"></a>5.5客户端数据预取</h3><blockquote>
+<p>当asyncData方法是由路由跳转触发的时候，则使用客户端数据预取，asyncData方法会在客户端执行。可以通过控制台打印来查看是在浏览器执行还是在node执行就可以验证了。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> asyncData(context)&#123;</span><br><span class="line">    <span class="comment">//给data取别名，请求网址写全</span></span><br><span class="line">    <span class="keyword">let</span> &#123;status,<span class="attr">data</span>:list&#125; = <span class="keyword">await</span> axios.get(<span class="string">"http://127.0.0.1:3000/city/info"</span>);</span><br><span class="line">    <span class="comment">//如果是客户端执行，则可以使用window对象</span></span><br><span class="line">    <span class="comment">//如果是服务端执行，则没有window对象</span></span><br><span class="line">    <span class="keyword">if</span>(process.client)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">window</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="comment">//这边不能使用this.list = list,因为获取不到this</span></span><br><span class="line">        <span class="comment">//通过return给页面返回数据</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            list</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六、SSR原理"><a href="#六、SSR原理" class="headerlink" title="六、SSR原理"></a>六、SSR原理</h2><p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180524/92672015b4914784ae5a800c4a655e25.jpeg" alt="img"></p>
+<p><a href="https://ssr.vuejs.org/zh/" target="_blank" rel="noopener">官方文档</a></p>
+<p>如上图所示：webpack将 Source 打包出两个bundle文件。</p>
+<ul>
+<li>服务端渲染：Server Bundle用于服务端渲染，主要是获取异步数据，同步到组件中，并将组件渲染成HTML返回到前端，但是<strong>vue-ssr不能绑定javascript事件</strong>，也就是说服务器端使用vue-ssr渲染出来的返回到浏览器的也只能是HTML+CSS。</li>
+</ul>
+<ul>
+<li>客户端渲染：Client Bundle 用于客户端渲染，之前说过服务器不能增加事件，那只能前端增加。所以我们看到SSR渲染的网页源码中有<code>window.__NUXT__=...</code>代码，这是后端和前端在使用vuex共享数据。后端从vuex里面取到数据之后渲染成真正的HTML和css返回。客户端也是从vuex里面取到数据，客户端的渲染主要做2件事：<ul>
+<li>拿到数据，使用    virtual-dom进行预渲染，然后和服务端渲染出来的进行比对，比对两边渲染的内容是不是一致的</li>
+<li>对DOM元素的事件进行绑定，也就是回答的问题，事件在这块进行的处理</li>
+</ul>
+</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月02日 11:22</p>
+        <p>原始链接： <a class="post-url" href="/2018/06/07/Nuxt/" title="Nuxt">https://HowlCN1997.github.io/2018/06/07/Nuxt/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2018/06/07/Nuxt/&title=《Nuxt》 — Howl&pic=http://api.cocoachina.com/uploads/20171229/1514517309288034.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2018/06/07/Nuxt/&title=《Nuxt》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2018/06/07/Nuxt/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nuxt》 — Howl&url=https://HowlCN1997.github.io/2018/06/07/Nuxt/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2018/06/07/Nuxt/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2018/06/07/Nuxt/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Vue/" class="color4">Vue</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nuxt"><span class="post-toc-text">Nuxt</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、简介"><span class="post-toc-text">一、简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、创建Nuxt项目"><span class="post-toc-text">二、创建Nuxt项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、Nuxt基本使用"><span class="post-toc-text">三、Nuxt基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-路由"><span class="post-toc-text">3.1 路由</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-嵌套子模版"><span class="post-toc-text">3.2 嵌套子模版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-layouts布局文件"><span class="post-toc-text">3.3 layouts布局文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-全局CSS文件"><span class="post-toc-text">3.4 全局CSS文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-5-Vuex的使用"><span class="post-toc-text">3.5 Vuex的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、SPA-SEO-SSR"><span class="post-toc-text">四、SPA\SEO\SSR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-SPA-单页面应用"><span class="post-toc-text">4.1  SPA:单页面应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-SEO-搜索引擎优化"><span class="post-toc-text">4.2 SEO:搜索引擎优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-SSR-服务器端渲染"><span class="post-toc-text">4.3 SSR:服务器端渲染</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-Nuxt对SSR支持"><span class="post-toc-text">4.4 Nuxt对SSR支持</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、数据预取"><span class="post-toc-text">五、数据预取</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-准备服务器接口"><span class="post-toc-text">5.1 准备服务器接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-不适用数据预取"><span class="post-toc-text">5.2 不适用数据预取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-Nuxt-js的工作流"><span class="post-toc-text">5.3 Nuxt.js的工作流</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-服务端数据预取"><span class="post-toc-text">5.4 服务端数据预取</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nuxtServerInit"><span class="post-toc-text">nuxtServerInit</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#asyncData和fetch方法"><span class="post-toc-text">asyncData和fetch方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-5客户端数据预取"><span class="post-toc-text">5.5客户端数据预取</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、SSR原理"><span class="post-toc-text">六、SSR原理</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/07/15/cookie_session/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          cookie session
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/05/29/GET和POST的区别与联系/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">GET与POST的区别与联系</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简述Js中的原型与原型链 | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="简述Js中的原型与原型链1、原型​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。 ​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。 ​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简述Js中的原型与原型链">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="简述Js中的原型与原型链1、原型​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。 ​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。 ​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/三者关系.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/原型链.png">
+<meta property="og:updated_time" content="2019-05-08T13:58:27.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简述Js中的原型与原型链">
+<meta name="twitter:description" content="简述Js中的原型与原型链1、原型​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。 ​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。 ​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/三者关系.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-简述Js中的原型与原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      简述Js中的原型与原型链
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-27
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="简述Js中的原型与原型链"><a href="#简述Js中的原型与原型链" class="headerlink" title="简述Js中的原型与原型链"></a>简述Js中的原型与原型链</h1><h2 id="1、原型"><a href="#1、原型" class="headerlink" title="1、原型"></a>1、原型</h2><p>​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。</p>
+<p>​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。</p>
+<p>​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是个对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.type = <span class="string">'human'</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'说话了'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//此时我们用Person构造函数构造了一个p对象</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'小王'</span>);</span><br><span class="line"><span class="comment">//我们打印p.name</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name); <span class="comment">//结果是'小王'，因为Preson函数中已经预置了name属性并且接受了new对象时传入的'小王'，结果勿容置疑</span></span><br><span class="line"><span class="comment">//我们再打印p.type 调用p.sayName()  按常理说Preson构造函数中是不存在type属性和sayName方法，若调用应该会报错</span></span><br><span class="line"><span class="built_in">console</span>.log(p.type); <span class="comment">//结果  human</span></span><br><span class="line">p.sayName(); <span class="comment">// 结果  小王说话了</span></span><br><span class="line"><span class="comment">//结果和我们预想的不同，这是为什么呢?</span></span><br><span class="line"><span class="comment">//因为Person继承了它原型Person.prototype中的信息，当调用p.type时，会优先在Person类中找该属性，若找到了则直接使用，若没找到则在他的原型中找并使用。因为我们设置了Person原型的type属性的，则p可以直接使用</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中涉及到了 构造函数、对象和函数原型，接下来给出三者之间的关系图；</p>
+<h2 id="2、构造函数、实例、原型三者之间的关系"><a href="#2、构造函数、实例、原型三者之间的关系" class="headerlink" title="2、构造函数、实例、原型三者之间的关系"></a>2、构造函数、实例、原型三者之间的关系</h2><p><img src="/2019/09/27/简述Js中的原型与原型链/三者关系.png" alt="三者关系"></p>
+<p>由图中我们可以很直观的看到三者之间的关系。</p>
+<p>p对象由Person构造函数构造</p>
+<p>p对象通过__proto__属性访问到Person对象原型</p>
+<p>Person对象原型通过constructor访问Person构造函数</p>
+<p>Person函数通过prototype属性访问到Person原型对象</p>
+<p>注意：对象是通过__proto__属性访问对象原型，函数是通过prototype访问对象原型，但两者访问到的对象原型是同一个</p>
+<p>验证：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p.__proto__ == Person.prototype); <span class="comment">//结果为 true</span></span><br></pre></td></tr></table></figure>
+<p>constructor的作用：可以使得对象访问到对应的构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p.constructor);<span class="comment">// 打印  function Person()</span></span><br></pre></td></tr></table></figure>
+<p>知道以上的知识之后，我们还要了解，其实Person的原型也有原型，即存在Person.prototype.prototype，并且它是Person.prototype的原型，可以用图来直观了解这其中的关系，这便是一个简单的原型链。</p>
+<h2 id="3、原型链"><a href="#3、原型链" class="headerlink" title="3、原型链"></a>3、原型链</h2><p><img src="/2019/09/27/简述Js中的原型与原型链/原型链.png" alt="原型链"></p>
+<h2 id="4、原型链中的搜索规则"><a href="#4、原型链中的搜索规则" class="headerlink" title="4、原型链中的搜索规则"></a>4、原型链中的搜索规则</h2><p>了解了 <strong>构造函数-实例-原型对象</strong> 三者之间的关系后，接下来我们来解释一下为什么实例对象可以访问原型对象中的成员。</p>
+<p>每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性</p>
+<ul>
+<li>搜索首先从对象实例本身开始</li>
+<li>如果在实例中找到了具有给定名字的属性，则返回该属性的值</li>
+<li>如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性</li>
+<li>如果在原型对象中找到了这个属性，则返回该属性的值</li>
+</ul>
+<p>也就是说，在我们调用 <code>p.sayName()</code> 的时候，会先后执行两次搜索：</p>
+<ul>
+<li>首先，解析器会问：“实例 p 有 sayName 属性吗？”答：“没有。</li>
+<li>”然后，它继续搜索，再问：“ p 的原型有 sayName 属性吗？”答：“有。</li>
+<li>”于是，它就读取那个保存在原型对象中的函数。</li>
+</ul>
+<p>而这正是多个对象实例共享原型所保存的属性和方法的基本原理。</p>
+<p>总结：</p>
+<ul>
+<li>先在自己身上找，找到即返回</li>
+<li>自己身上找不到，则沿着原型链向上查找，找到即返回</li>
+<li>如果一直到原型链的末端还没有找到，则返回 <code>undefined</code></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年05月08日 21:58</p>
+        <p>原始链接： <a class="post-url" href="/2019/09/27/简述Js中的原型与原型链/" title="简述Js中的原型与原型链">https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557333974019&di=1ddcc81ffcdf05c50755c762a4524f13&imgtype=0&src=http%3A%2F%2Fimage.bubuko.com%2Finfo%2F201803%2F20180304202824554437.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简述Js中的原型与原型链》 — Howl&url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Javascript/" class="color1">Javascript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简述Js中的原型与原型链"><span class="post-toc-text">简述Js中的原型与原型链</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、原型"><span class="post-toc-text">1、原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、构造函数、实例、原型三者之间的关系"><span class="post-toc-text">2、构造函数、实例、原型三者之间的关系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3、原型链"><span class="post-toc-text">3、原型链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、原型链中的搜索规则"><span class="post-toc-text">4、原型链中的搜索规则</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/09/27/Git和Gitlab/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          使用GitLab
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/09/27/浅析Javascript中的冒泡机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Javascript中的冒泡机制</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

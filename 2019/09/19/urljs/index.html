@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>URI.js | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="URI.js简介 URI.js是一个用于处理URL的JavaScript库。可以对URI进行解析， 它提供了一个 jQuery风格 API（Fluent Interface，Method Chaining）来读写所有常规组件和一些方便的方法，如.directory（）和.authority（）。 URI.js提供了简单但强大的查询字符串处理方式，具有许多URI规范化函数并转换相对/绝对路径。 而U">
+<meta name="keywords" content="Javascript,Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="URI.js">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/09/19/urljs/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="URI.js简介 URI.js是一个用于处理URL的JavaScript库。可以对URI进行解析， 它提供了一个 jQuery风格 API（Fluent Interface，Method Chaining）来读写所有常规组件和一些方便的方法，如.directory（）和.authority（）。 URI.js提供了简单但强大的查询字符串处理方式，具有许多URI规范化函数并转换相对/绝对路径。 而U">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:updated_time" content="2019-09-19T03:31:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="URI.js">
+<meta name="twitter:description" content="URI.js简介 URI.js是一个用于处理URL的JavaScript库。可以对URI进行解析， 它提供了一个 jQuery风格 API（Fluent Interface，Method Chaining）来读写所有常规组件和一些方便的方法，如.directory（）和.authority（）。 URI.js提供了简单但强大的查询字符串处理方式，具有许多URI规范化函数并转换相对/绝对路径。 而U">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-urljs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      URI.js
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="URI-js"><a href="#URI-js" class="headerlink" title="URI.js"></a>URI.js</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>URI.js是一个用于处理URL的JavaScript库。可以对URI进行解析， 它提供了一个 jQuery风格 API（Fluent Interface，Method Chaining）来读写所有常规组件和一些方便的方法，如.directory（）和.authority（）。</p>
+<p>URI.js提供了简单但强大的查询字符串处理方式，具有许多URI规范化函数并转换相对/绝对路径。</p>
+<p>而URI.js提供了一个jQuery插件。 URI.js本身不依赖于 jQuery 。 您不需要jQuery来使用URI.js</p>
+</blockquote>
+<h2 id="API示例"><a href="#API示例" class="headerlink" title="API示例"></a>API示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">URI(<span class="string">"http://example.org/foo.html?hello=world"</span>)</span><br><span class="line">    .username(<span class="string">"rodneyrehm"</span>)</span><br><span class="line"><span class="comment">// -&gt; http://rodneyrehm@example.org/foo.html?hello=world</span></span><br><span class="line">    .username(<span class="string">""</span>)</span><br><span class="line"><span class="comment">// -&gt; http://example.org/foo.html?hello=world</span></span><br><span class="line">    .directory(<span class="string">"bar"</span>)</span><br><span class="line"><span class="comment">// -&gt; http://example.org/bar/foo.html?hello=world   添加路径</span></span><br><span class="line">    .suffix(<span class="string">"xml"</span>)</span><br><span class="line"><span class="comment">// -&gt; http://example.org/bar/foo.xml?hello=world    添加后缀</span></span><br><span class="line">    .query(<span class="string">""</span>)</span><br><span class="line"><span class="comment">// -&gt; http://example.org/bar/foo.xml                添加查询条件</span></span><br><span class="line">    .tld(<span class="string">"com"</span>)</span><br><span class="line"><span class="comment">// -&gt; http://example.com/bar/foo.xml                修改域名后缀</span></span><br><span class="line">    .query(&#123; <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">hello</span>: [<span class="string">"world"</span>, <span class="string">"mars"</span>] &#125;);</span><br><span class="line"><span class="comment">// -&gt; http://example.com/bar/foo.xml?foo=bar&amp;hello=world&amp;hello=mars</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 简化</span></span><br><span class="line">URI(<span class="string">"?&amp;foo=bar&amp;&amp;foo=bar&amp;foo=baz&amp;"</span>)</span><br><span class="line">    .normalizeQuery();</span><br><span class="line"><span class="comment">// -&gt; ?foo=bar&amp;foo=baz</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取相对路径</span></span><br><span class="line">URI(<span class="string">"/foo/bar/baz.html"</span>)</span><br><span class="line">    .relativeTo(<span class="string">"/foo/bar/world.html"</span>);</span><br><span class="line"><span class="comment">// -&gt; ./baz.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取绝对路径</span></span><br><span class="line">URI(<span class="string">"/foo/bar/baz.html"</span>)</span><br><span class="line">    .relativeTo(<span class="string">"/foo/bar/sub/world.html"</span>)</span><br><span class="line"><span class="comment">// -&gt; ../baz.html</span></span><br><span class="line">    .absoluteTo(<span class="string">"/foo/bar/sub/world.html"</span>);</span><br><span class="line"><span class="comment">// -&gt; /foo/bar/baz.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// uri模板</span></span><br><span class="line">URI.expand(<span class="string">"/foo/&#123;dir&#125;/&#123;file&#125;"</span>, &#123;</span><br><span class="line">    dir: <span class="string">"bar"</span>,</span><br><span class="line">    file: <span class="string">"world.html"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// -&gt; /foo/bar/world.html</span></span><br></pre></td></tr></table></figure>
+<h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><h3 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(); <span class="comment">//相当于 new URI(location.href)</span></span><br><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"http://example.org"</span>); <span class="comment">//新建一个uri</span></span><br><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="keyword">new</span> URI(<span class="string">"http://example.org"</span>)); <span class="comment">//clone一个uri</span></span><br><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"http://example.org"</span>).clone(); <span class="comment">//clone一个uri</span></span><br><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(&#123;</span><br><span class="line">    protocol: <span class="string">"http"</span>, <span class="comment">// no trailing :</span></span><br><span class="line">    username: <span class="string">"user"</span>,</span><br><span class="line">    password: <span class="string">"pass"</span>,</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="string">"80"</span>, <span class="comment">// 这里是string，不是数字</span></span><br><span class="line">    path: <span class="string">"/foo/bar.html"</span>,  </span><br><span class="line">    query: <span class="string">"foo=bar&amp;bar=baz"</span>, <span class="comment">// 注意，是"query"，不是"search"，而且，不要在前面加"?"</span></span><br><span class="line">    fragment: <span class="string">"frag"</span> <span class="comment">// 注意，是"fragment"，不是"hash"，而且，不要在前面加"#"</span></span><br><span class="line">&#125;); <span class="comment">//用对象方式新建uri</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;</span><br><span class="line">    protocol: <span class="string">"http"</span>,</span><br><span class="line">    username: <span class="literal">null</span>,</span><br><span class="line">    password: <span class="literal">null</span>,</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="literal">null</span>,</span><br><span class="line">    path: <span class="string">"/foo.html"</span>,</span><br><span class="line">    query: <span class="literal">null</span>,</span><br><span class="line">    fragment: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line">URI.build(parts) === <span class="string">"http://example.org/foo.html"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;</span><br><span class="line">    username: <span class="string">"user"</span>,</span><br><span class="line">    password: <span class="string">"pass"</span>,</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="string">"8080"</span></span><br><span class="line">&#125;;</span><br><span class="line">URI.buildAuthority(parts) === <span class="string">"user:pass@example.org:8080"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;</span><br><span class="line">    username: <span class="string">"user"</span>,</span><br><span class="line">    password: <span class="string">"pass"</span></span><br><span class="line">&#125;;</span><br><span class="line">URI.buildUserinfo(parts) === <span class="string">"user:pass@"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="string">"8080"</span></span><br><span class="line">&#125;;</span><br><span class="line">URI.buildHost(parts) === <span class="string">"example.org:8080"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    foo: <span class="string">"bar"</span>,</span><br><span class="line">    hello: [<span class="string">"world"</span>, <span class="string">"mars"</span>, <span class="string">"mars"</span>],</span><br><span class="line">    bam: <span class="string">""</span>,</span><br><span class="line">    yup: <span class="literal">null</span>,</span><br><span class="line">    removed: <span class="literal">undefined</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意，默认情况下，同一个键相同的值会被合并</span></span><br><span class="line">URI.buildQuery(data) === <span class="string">"foo=bar&amp;hello=world&amp;hello=mars&amp;bam=&amp;yup"</span>;</span><br><span class="line"><span class="comment">// 调用时传入true则会保留相同的值</span></span><br><span class="line">URI.buildQuery(data, <span class="literal">true</span>) === <span class="string">"foo=bar&amp;hello=world&amp;hello=mars&amp;hello=mars&amp;bam=&amp;yup"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"http://user:pass@example.org:80/foo/hello.html"</span>);</span><br><span class="line">uri.href() === <span class="string">"http://user:pass@example.org:80/foo/hello.html"</span>;</span><br><span class="line">uri.toString() === <span class="string">"http://user:pass@example.org:80/foo/hello.html"</span>;</span><br><span class="line">uri.protocol(); <span class="comment">// "http"，protocol()别名为scheme()</span></span><br><span class="line">uri.username(); <span class="comment">// "user"</span></span><br><span class="line">uri.password(); <span class="comment">// "pass"</span></span><br><span class="line">uri.hostname(); <span class="comment">// "example.org"，注意，hostname()返回的hostname不包含port</span></span><br><span class="line">uri.port(); <span class="comment">// "80"</span></span><br><span class="line">uri.host(); <span class="comment">// "example.org:80"</span></span><br><span class="line">uri.userinfo(); <span class="comment">// "user:pass"，即username+password</span></span><br><span class="line">uri.authority(); <span class="comment">// "user:pass@example.org:80"，即username+password+hostname+port</span></span><br><span class="line">uri.origin(); <span class="comment">// "http://user:pass@example.org:80"，即protocol+authority</span></span><br><span class="line">uri.domain(); <span class="comment">// "example.org"。如果url是“www.example.org”，那么hostname为“www.example.org”，而domain为“example.org”</span></span><br><span class="line">uri.subdomain(); <span class="comment">// ""，如果url是“www.example.org”，那么返回"www"</span></span><br><span class="line">uri.tld(); <span class="comment">// "org"</span></span><br><span class="line">uri.pathname(); <span class="comment">// "/foo/hello.html"，pathname()别名为path()</span></span><br><span class="line">uri.directory(); <span class="comment">// "/foo" 结尾没斜杠</span></span><br><span class="line"><span class="comment">//关于特殊字符有以下情况</span></span><br><span class="line"><span class="comment">//uri.directory("/hello world/");</span></span><br><span class="line"><span class="comment">//uri.directory() === "/hello%20world";</span></span><br><span class="line"><span class="comment">//uri.directory(true) === "/hello world";</span></span><br><span class="line">uri.filename(); <span class="comment">// "hello.html" 开头没斜杠</span></span><br><span class="line"><span class="comment">//关于特殊字符有以下情况</span></span><br><span class="line"><span class="comment">//uri.filename("hello world.html");</span></span><br><span class="line"><span class="comment">//uri.filename() === "hello%20world.html";</span></span><br><span class="line"><span class="comment">//uri.filename(true) === "hello world.html";</span></span><br><span class="line">uri.suffix(); <span class="comment">// "html" 开头没“.”</span></span><br><span class="line"><span class="comment">//关于特殊字符有以下情况</span></span><br><span class="line"><span class="comment">//uri.suffix("würgh");</span></span><br><span class="line"><span class="comment">//uri.suffix() === "w%C3%BCrgh";</span></span><br><span class="line"><span class="comment">//uri.suffix(true) === "würgh";</span></span><br><span class="line">uri.segment(); <span class="comment">// 返回["foo", "hello.html"]，表示路径的directory</span></span><br><span class="line"><span class="comment">//uri.segment(["foo", "bar", "foobar.html"]); // 将路径设置为http://user:pass@example.org:80/foo/bar/foobar.html</span></span><br><span class="line">uri.segment(<span class="number">0</span>); <span class="comment">// 返回"foo"</span></span><br><span class="line">uri.segmentCoded(); <span class="comment">// 返回["foo", "hello.html"]，功能与segment相同，只是会在返回结果时自动解码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = URI.parse(<span class="string">"http://example.org/foo.html"</span>);</span><br><span class="line">result === &#123;</span><br><span class="line">    protocol: <span class="string">"http"</span>,</span><br><span class="line">    username: <span class="literal">null</span>,</span><br><span class="line">    password: <span class="literal">null</span>,</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="literal">null</span>,</span><br><span class="line">    path: <span class="string">"/foo.html"</span>,</span><br><span class="line">    query: <span class="literal">null</span>,</span><br><span class="line">    fragment: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> result = URI.parseAuthority(<span class="string">"user:pass@example.org:8080/foo.html"</span>, parts);</span><br><span class="line">result === <span class="string">"/foo.html"</span>;</span><br><span class="line">parts === &#123;</span><br><span class="line">    username: <span class="string">"user"</span>,</span><br><span class="line">    password: <span class="string">"pass"</span>,</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="string">"8080"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> result = URI.parseUserinfo(<span class="string">"user:pass@example.org:8080/foo.html"</span>, parts);</span><br><span class="line">result === <span class="string">"example.org:8080/foo.html"</span>;</span><br><span class="line">parts === &#123;</span><br><span class="line">    username: <span class="string">"user"</span>,</span><br><span class="line">    password: <span class="string">"pass"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parts = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> result = URI.parseHost(<span class="string">"example.org:8080/foo.html"</span>, parts);</span><br><span class="line">result === <span class="string">"/foo.html"</span>;</span><br><span class="line">parts === &#123;</span><br><span class="line">    hostname: <span class="string">"example.org"</span>,</span><br><span class="line">    port: <span class="string">"8080"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = URI.parseQuery(<span class="string">"?foo=bar&amp;hello=world&amp;hello=mars&amp;bam=&amp;yup"</span>);</span><br><span class="line">result === &#123;</span><br><span class="line">    foo: <span class="string">"bar"</span>,</span><br><span class="line">    hello: [<span class="string">"world"</span>, <span class="string">"mars"</span>],</span><br><span class="line">    bam: <span class="string">""</span>,</span><br><span class="line">    yup: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h3><h4 id="附带参数解析"><a href="#附带参数解析" class="headerlink" title="? 附带参数解析"></a><code>?</code> 附带参数解析</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"http://example.org/foo/hello.html?foo=bar&amp;bar=baz"</span>);</span><br><span class="line">uri.search(); <span class="comment">// 返回"?foo=bar&amp;bar=baz"，以"?"开头</span></span><br><span class="line">uri.query(); <span class="comment">// 返回"foo=bar&amp;bar=baz"</span></span><br><span class="line">uri.search(<span class="literal">true</span>); <span class="comment">// 返回&#123; foo: "bar", bar : "baz" &#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="附带参数"><a href="#附带参数" class="headerlink" title="#附带参数"></a><code>#</code>附带参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"http://example.org/foo/hello.html#world"</span>);</span><br><span class="line">uri.hash(); <span class="comment">// 返回"#world"，以"#"开头</span></span><br><span class="line">uri.fragment(); <span class="comment">// 返回"world"</span></span><br></pre></td></tr></table></figure>
+<h4 id="附带参数地修改"><a href="#附带参数地修改" class="headerlink" title="?附带参数地修改"></a><code>?</code>附带参数地修改</h4><blockquote>
+<p>setSearch 是 setQuery 的别称</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"?hello=world"</span>);</span><br><span class="line">uri.setSearch(<span class="string">"hello"</span>, <span class="string">"mars"</span>); <span class="comment">// 返回一个uri，uri内容为"?hello=mars"</span></span><br><span class="line">uri.setSearch(&#123; <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">goodbye</span> : [<span class="string">"world"</span>, <span class="string">"mars"</span>] &#125;);</span><br><span class="line"><span class="comment">// 返回一个uri，uri内容为"?hello=mars&amp;foo=bar&amp;goodbye=world&amp;goodbye=mars"</span></span><br><span class="line">uri.setSearch(<span class="string">"goodbye"</span>, <span class="string">"sun"</span>);<span class="comment">// 返回一个uri，uri内容为"?hello=mars&amp;foo=bar&amp;goodbye=sun"</span></span><br><span class="line"></span><br><span class="line">uri = <span class="keyword">new</span> URI(<span class="string">"?hello=world"</span>);</span><br><span class="line">uri.addSearch(<span class="string">"hello"</span>, <span class="string">"mars"</span>); <span class="comment">// 返回一个uri，uri内容为"?hello=world&amp;hello=mars"</span></span><br><span class="line">uri.addSearch(&#123; <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">goodbye</span> : [<span class="string">"world"</span>, <span class="string">"mars"</span>] &#125;);</span><br><span class="line"><span class="comment">// 返回一个uri，uri内容为"?hello=world&amp;hello=mars&amp;foo=bar&amp;goodbye=world&amp;goodbye=mars"</span></span><br><span class="line">uri.addSearch(<span class="string">"no-value"</span>);</span><br><span class="line"><span class="comment">//返回一个uri，uri内容为"?hello=world&amp;hello=mars&amp;foo=bar&amp;goodbye=world&amp;goodbye=mars&amp;no-value"</span></span><br><span class="line"></span><br><span class="line">uri = <span class="keyword">new</span> URI(<span class="string">"?hello=world&amp;hello=mars&amp;foo=bar"</span>);</span><br><span class="line">uri.removeSearch(<span class="string">"hello"</span>); <span class="comment">// 返回一个uri，uri内容为"?foo=bar"</span></span><br><span class="line">uri.search(<span class="string">"?hello=world&amp;hello=mars&amp;foo=bar"</span>);</span><br><span class="line">uri.removeSearch(<span class="string">"hello"</span>, <span class="string">"world"</span>); <span class="comment">// 返回一个uri，uri内容为"?hello=mars&amp;foo=bar"</span></span><br><span class="line"></span><br><span class="line">uri.search(<span class="string">"?hello=world&amp;hello=mars&amp;foo=bar&amp;mine=true"</span>);</span><br><span class="line">uri.removeSearch([<span class="string">"hello"</span>, <span class="string">"foo"</span>]); <span class="comment">// 返回一个uri，uri内容为"?mine=true"</span></span><br><span class="line"></span><br><span class="line">uri.search(<span class="string">"?hello=world&amp;hello=mars&amp;foo=bar&amp;mine=true&amp;a=1&amp;a=2&amp;a=3"</span>);</span><br><span class="line">uri.removeSearch(&#123;<span class="attr">hello</span>: <span class="string">"world"</span>, <span class="attr">foo</span>: <span class="literal">undefined</span>, <span class="attr">a</span>: [<span class="string">"1"</span>, <span class="string">"3"</span>]&#125;);</span><br><span class="line"><span class="comment">// 返回一个uri，uri内容为"?hello=mars&amp;mine=true&amp;a=2"</span></span><br><span class="line"></span><br><span class="line">uri.search(<span class="string">"?foo=bar&amp;foo=baz&amp;foo=bam&amp;obj=bam&amp;bar=bar&amp;bar=baz&amp;bar=bam"</span>);</span><br><span class="line">uri.removeSearch(<span class="string">'foo'</span>, /[rz]$/);</span><br><span class="line"><span class="comment">// 返回一个uri，uri内容为"?foo=bam&amp;obj=bam&amp;bar=bar&amp;bar=baz&amp;bar=bam"</span></span><br></pre></td></tr></table></figure>
+<h4 id="附带参数地判断"><a href="#附带参数地判断" class="headerlink" title="?附带参数地判断"></a><code>?</code>附带参数地判断</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = URI(<span class="string">"?string=bar&amp;list=one&amp;list=two&amp;number=123&amp;null&amp;empty="</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查参数是否存在（不管此参数是否有值）</span></span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>) === <span class="literal">true</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"nono"</span>) === <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查参数的值bool化后为true还是false</span></span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>, <span class="literal">true</span>) === <span class="literal">true</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>, <span class="literal">false</span>) === <span class="literal">false</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"empty"</span>, <span class="literal">true</span>) === <span class="literal">false</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"empty"</span>, <span class="literal">false</span>) === <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查参数的值是否为指定值</span></span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>, <span class="string">"bar"</span>) === <span class="literal">true</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"number"</span>, <span class="number">123</span>) === <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查参数的值是否在给定的列表中</span></span><br><span class="line">uri.hasQuery(<span class="string">"list"</span>, <span class="string">"two"</span>, <span class="literal">true</span>) === <span class="literal">true</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"list"</span>, [<span class="string">"two"</span>], <span class="literal">true</span>) === <span class="literal">true</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"list"</span>, <span class="string">"three"</span>, <span class="literal">true</span>) === <span class="literal">false</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"list"</span>, [<span class="string">"two"</span>, <span class="string">"three"</span>], <span class="literal">true</span>) === <span class="literal">false</span>;</span><br><span class="line">uri.hasQuery(<span class="string">"list"</span>, /ne$/, <span class="literal">true</span>) === <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查参数的值是否符合正则表达式</span></span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>, /ar$/) === <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查是否有参数的名称符合正则表达式</span></span><br><span class="line">uri.hasQuery(<span class="regexp">/^str/</span>) === <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 检查符合正则表达式的参数的值是否为指定值</span></span><br><span class="line">uri.hasQuery(<span class="regexp">/^li/</span>, <span class="string">"two"</span>) === <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过传入方法判断</span></span><br><span class="line">uri.hasQuery(<span class="string">"string"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">value, name, data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// value === "bar";</span></span><br><span class="line">    <span class="comment">// name === "string";</span></span><br><span class="line">    <span class="comment">// data === uri.query(true);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;) === <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="路径转换"><a href="#路径转换" class="headerlink" title="路径转换"></a>路径转换</h3><blockquote>
+<p>relativeTo()和absoluteTo()可以将路径转换为相对路径/绝对路径。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri = <span class="keyword">new</span> URI(<span class="string">"/relative/path"</span>);</span><br><span class="line"><span class="comment">// make path relative</span></span><br><span class="line"><span class="keyword">var</span> relUri = uri.relativeTo(<span class="string">"/relative/sub/foo/sub/file"</span>); <span class="comment">// 返回一个uri，uri内容为"../../../path"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> anotherUri = relUri.absoluteTo(<span class="string">"/relative/sub/foo/sub/file"</span>); <span class="comment">// 返回一个uri，uri内容为"/relative/path"</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">URI.commonPath(<span class="string">"/foo/bar/baz.html"</span>, <span class="string">"/foo/bar/world.html"</span>);<span class="comment">// 返回"/foo/bar/"</span></span><br><span class="line">URI.joinPaths(<span class="string">'/a/b'</span>, <span class="string">'/c'</span>, <span class="string">'d'</span>, <span class="string">'/e'</span>);<span class="comment">// 返回URI("/a/b/c/d/e")</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">URI.addQuery(data, <span class="string">"hello"</span>, <span class="string">"mars"</span>);</span><br><span class="line">data === &#123;<span class="attr">hello</span>: <span class="string">"mars"</span>&#125;;</span><br><span class="line"></span><br><span class="line">URI.addQuery(data, <span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br><span class="line">data === &#123;<span class="attr">hello</span>: [<span class="string">"mars"</span>, <span class="string">"world"</span>]&#125;;</span><br><span class="line"></span><br><span class="line">URI.addQuery(data, &#123;<span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">goodbye</span> : [<span class="string">"world"</span>, <span class="string">"mars"</span>]&#125;);</span><br><span class="line">data === &#123;<span class="attr">hello</span>: [<span class="string">"mars"</span>, <span class="string">"world"</span>], <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">goodbye</span> : [<span class="string">"world"</span>, <span class="string">"mars"</span>]&#125;;</span><br><span class="line"></span><br><span class="line">URI.removeQuery(data, <span class="string">"hello"</span>);</span><br><span class="line">data === &#123;<span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">goodbye</span> : [<span class="string">"world"</span>, <span class="string">"mars"</span>]&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除指定值</span></span><br><span class="line">data = &#123;<span class="attr">hello</span>: [<span class="string">"world"</span>, <span class="string">"mars"</span>], <span class="attr">foo</span>: <span class="string">"bar"</span>&#125;;</span><br><span class="line">URI.removeQuery(data, <span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br><span class="line">data === &#123;<span class="attr">hello</span>: [<span class="string">"mars"</span>], <span class="attr">foo</span>: <span class="string">"bar"</span>&#125; <span class="comment">// yes, still an array</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除多个键</span></span><br><span class="line">data = &#123;<span class="attr">hello</span>: [<span class="string">"world"</span>, <span class="string">"mars"</span>], <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">mine</span>: <span class="string">"true"</span>&#125;</span><br><span class="line">URI.removeQuery(data, [<span class="string">"hello"</span>, <span class="string">"foo"</span>]);</span><br><span class="line">data === &#123;<span class="attr">mine</span>: <span class="string">"true"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除多个键的指定值</span></span><br><span class="line">data = &#123;<span class="attr">hello</span>: [<span class="string">"world"</span>, <span class="string">"mars"</span>], <span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">mine</span>: <span class="string">"true"</span>, <span class="attr">a</span>: [<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>]&#125;</span><br><span class="line">URI.removeQuery(data, &#123;<span class="attr">hello</span>: <span class="string">"world"</span>, <span class="attr">foo</span>: <span class="literal">undefined</span>, <span class="attr">a</span>: [<span class="string">"1"</span>, <span class="string">"3"</span>]&#125;);</span><br><span class="line">data === &#123;<span class="attr">hello</span>: [<span class="string">"mars"</span>], <span class="attr">mine</span>: <span class="string">"true"</span>, <span class="attr">a</span>: [<span class="string">"2"</span>]&#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月19日 11:31</p>
+        <p>原始链接： <a class="post-url" href="/2019/09/19/urljs/" title="URI.js">https://HowlCN1997.github.io/2019/09/19/urljs/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/09/19/urljs/&title=《URI.js》 — Howl&pic=https://i.loli.net/2019/09/19/8pdD9xHZswfKqNt.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/09/19/urljs/&title=《URI.js》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/09/19/urljs/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《URI.js》 — Howl&url=https://HowlCN1997.github.io/2019/09/19/urljs/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/09/19/urljs/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/09/19/urljs/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Javascript/" class="color1">Javascript</a>
+      
+    <a href="/tags/Tools/" class="color1">Tools</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#URI-js"><span class="post-toc-text">URI.js</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#API示例"><span class="post-toc-text">API示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用API"><span class="post-toc-text">常用API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建"><span class="post-toc-text">新建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解析"><span class="post-toc-text">解析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数解析"><span class="post-toc-text">参数解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附带参数解析"><span class="post-toc-text">? 附带参数解析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附带参数"><span class="post-toc-text">#附带参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附带参数地修改"><span class="post-toc-text">?附带参数地修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附带参数地判断"><span class="post-toc-text">?附带参数地判断</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路径转换"><span class="post-toc-text">路径转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-text">其他</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/09/20/Git/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Git
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/08/19/canvas的基本使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Canvas的基本使用</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

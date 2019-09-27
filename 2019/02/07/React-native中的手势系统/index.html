@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>React-native中的手势系统 | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="React-native中的手势系统​        移动设备上的手势识别要比在web上复杂得多。用户的一次触摸操作的真实意图是什么，App要经过好几个阶段才能判断。比如App需要判断用户的触摸到底是在滚动页面，还是滑动一个widget，或者只是一个单纯的点击。甚至随着持续时间的不同，这些操作还会转化。此外，还有多点同时触控的情况。 ​        触摸响应系统可以使组件在不关心父组件或子组件的">
+<meta name="keywords" content="React-Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-native中的手势系统">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="React-native中的手势系统​        移动设备上的手势识别要比在web上复杂得多。用户的一次触摸操作的真实意图是什么，App要经过好几个阶段才能判断。比如App需要判断用户的触摸到底是在滚动页面，还是滑动一个widget，或者只是一个单纯的点击。甚至随着持续时间的不同，这些操作还会转化。此外，还有多点同时触控的情况。 ​        触摸响应系统可以使组件在不关心父组件或子组件的">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:updated_time" content="2019-09-27T02:16:05.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-native中的手势系统">
+<meta name="twitter:description" content="React-native中的手势系统​        移动设备上的手势识别要比在web上复杂得多。用户的一次触摸操作的真实意图是什么，App要经过好几个阶段才能判断。比如App需要判断用户的触摸到底是在滚动页面，还是滑动一个widget，或者只是一个单纯的点击。甚至随着持续时间的不同，这些操作还会转化。此外，还有多点同时触控的情况。 ​        触摸响应系统可以使组件在不关心父组件或子组件的">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-React-native中的手势系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      React-native中的手势系统
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-02-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="React-native中的手势系统"><a href="#React-native中的手势系统" class="headerlink" title="React-native中的手势系统"></a>React-native中的手势系统</h1><p>​        移动设备上的手势识别要比在web上复杂得多。用户的一次触摸操作的真实意图是什么，App要经过好几个阶段才能判断。比如App需要判断用户的触摸到底是在滚动页面，还是滑动一个widget，或者只是一个单纯的点击。甚至随着持续时间的不同，这些操作还会转化。此外，还有多点同时触控的情况。</p>
+<p>​        触摸响应系统可以使组件在不关心父组件或子组件的前提下自行处理触摸交互。</p>
+<h2 id="手势组件"><a href="#手势组件" class="headerlink" title="手势组件"></a>手势组件</h2><h3 id="react-native中预置的处理手势的组件"><a href="#react-native中预置的处理手势的组件" class="headerlink" title="react-native中预置的处理手势的组件"></a>react-native中预置的处理手势的组件</h3><p>​        react-native中是没有click等事件的，需要借助封装的好的组件配合（<code>onpress</code> 或`onLongPress）完成手势处理</p>
+<p>组件：</p>
+<ul>
+<li><p><code>TouchableHighlight</code>                  触摸屏幕会有高亮显示</p>
+</li>
+<li><p><code>TouchableNativeFeedback</code>     触摸屏幕会有水波纹效果（仅限Android）</p>
+</li>
+<li><p><code>TouchableOpacity</code>                    触摸屏幕改变当前元素的透明度</p>
+</li>
+<li><p><code>TouchableWithoutFeedback</code>  触摸屏幕无任何效果</p>
+</li>
+</ul>
+<p>事件：</p>
+<ul>
+<li><p><code>onPress</code>                                      点击组件时触发</p>
+</li>
+<li><p><code>onLongPress</code>                             长按组件时触发</p>
+</li>
+</ul>
+<h2 id="手势系统"><a href="#手势系统" class="headerlink" title="手势系统"></a>手势系统</h2><p>​    单单依靠单击和长按是无法满足移动App多种手势的需求的，此时需要利用收拾系统。</p>
+<ul>
+<li><p>引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; PanResponder &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置手势</p>
+<ul>
+<li>处理函数：<ul>
+<li><code>onStartShouldSetPanResponder</code>        用户开始触摸屏幕的时候，是否愿意成为响应者；默认返回false，无法响应，当返回true的时候则可以进行之后的事件传递。默认为false</li>
+<li><code>onMoveShouldSetPanResponder</code>        在每一个触摸点开始移动的时候，再询问一次是否响应触摸交互；认为false</li>
+<li><code>onPanResponderGrant</code>        开始手势操作，也可以说按下去。给用户一些视觉反馈，让他们知道发生了什么事情！（如：可以修改颜色）</li>
+<li><code>onPanResponderMove</code>        最近一次的移动距离.如:(获取x轴y轴方向的移动距离 <code>gestureState.dx,gestureState.dy</code>)</li>
+<li><code>onPanResponderRelease</code>        用户放开了所有的触摸点，且此时视图已经成为了响应者。</li>
+<li><code>onPanResponderTerminate</code>        另一个组件已经成为了新的响应者，所以当前手势将被取消。</li>
+</ul>
+</li>
+<li>参数<ul>
+<li>evt<ul>
+<li>nativeEvent<ul>
+<li><code>changedTouches</code> - 在上一次事件之后，所有发生变化的触摸事件的数组集合（即上一次事件后，所有移动过的触摸点）</li>
+<li><code>identifier</code> - 触摸点的ID</li>
+<li><code>locationX</code> - 触摸点相对于父元素的横坐标</li>
+<li><code>locationY</code> - 触摸点相对于父元素的纵坐标</li>
+<li><code>pageX</code> - 触摸点相对于根元素的横坐标</li>
+<li><code>pageY</code> - 触摸点相对于根元素的纵坐标</li>
+<li><code>target</code> - 触摸点所在的元素ID</li>
+<li><code>timestamp</code> - 触摸事件的时间戳，可用于移动速度的计算</li>
+<li><code>touches</code> - 当前屏幕上的所有触摸点的集合</li>
+</ul>
+</li>
+<li>gestureState <ul>
+<li><code>dx/dy</code> - 手势进行到现在的横向/纵向相对位移</li>
+<li><code>vx/vy</code> - 此刻的横向/纵向速度</li>
+<li><code>numberActiveTouches</code> - responder上的触摸的个数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般来说 手势的创建放在  componentWillMount  生命周期中</span></span><br><span class="line">componentWillMount(evt, gestureState) &#123;</span><br><span class="line">    <span class="comment">// 手势创建</span></span><br><span class="line">    <span class="keyword">this</span>._panResponder = PanResponder.create(&#123;</span><br><span class="line">        onStartShouldSetPanResponder:  <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> <span class="literal">true</span>,</span><br><span class="line">        onMoveShouldSetPanResponder:   <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> <span class="literal">true</span>,</span><br><span class="line">        onPanResponderGrant: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//onStartShouldSetPanResponder为true时立即执行</span></span><br><span class="line">        &#125;,</span><br><span class="line">        onPanResponderMove: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">        onPanResponderRelease: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">        onPanResponderTerminate: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">View</span> &#123;<span class="attr">...this.panResponder.panHandlers</span>&#125;&#125; &gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用手势系统实现图片拖拽"><a href="#使用手势系统实现图片拖拽" class="headerlink" title="使用手势系统实现图片拖拽"></a>使用手势系统实现图片拖拽</h2><h3 id="1、实现长按-释放改变图片样式"><a href="#1、实现长按-释放改变图片样式" class="headerlink" title="1、实现长按/释放改变图片样式"></a>1、实现长按/释放改变图片样式</h3><ol>
+<li><p>声明一个状态控制变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">    <span class="comment">//是否开始拖动</span></span><br><span class="line">    isMove: <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置手势系统</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount(evt, gestureState) &#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="comment">//手势创建</span></span><br><span class="line">  <span class="keyword">this</span>._panResponder = PanResponder.create(&#123;</span><br><span class="line">    onStartShouldSetPanResponder: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">//当长按1秒之后使得isMove为真，开启拖拽状态</span></span><br><span class="line">      <span class="built_in">window</span>.homeTimer = setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">'定时开启'</span>);</span><br><span class="line">        self.setState(<span class="function">(<span class="params">state</span>)=&gt;</span>&#123;</span><br><span class="line">          <span class="keyword">return</span>&#123;</span><br><span class="line">           isMove: <span class="literal">true</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,<span class="number">1000</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    onMoveShouldSetPanResponder: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> <span class="literal">true</span>,</span><br><span class="line">    onPanResponderGrant: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">    onPanResponderMove: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(self.state.isMove)&#123;</span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">'正在移动'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    onPanResponderRelease: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">//释放时，立刻清除定时器，使isMove不为真</span></span><br><span class="line">      clearTimeout(<span class="built_in">window</span>.homeTimer);</span><br><span class="line">      <span class="comment">//开启拖拽状态后，释放时关闭拖拽状态</span></span><br><span class="line">      self.setState(<span class="function">(<span class="params">state</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">         isMove: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><p>利用<code>this.state.isMove</code>来控制图片状态</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   render() &#123;</span><br><span class="line">       <span class="keyword">return</span> (</span><br><span class="line">           &lt;View style=&#123;styles.root&#125;&gt;</span><br><span class="line">               &lt;View &#123;...this._panResponder.panHandlers&#125; ref=<span class="string">'refImage'</span> style=&#123;<span class="keyword">this</span>.state.isMove ? styles.moveView : styles.noMoveView&#125;&gt;</span><br><span class="line">                   &lt;Image style=&#123;&#123;<span class="attr">width</span>: <span class="string">'100%'</span>,<span class="attr">height</span>: <span class="string">'100%'</span>&#125;&#125; source=&#123;<span class="built_in">require</span>(<span class="string">'../../assets/images/test.png'</span>)&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Image</span>&gt;</span></span></span><br><span class="line">               &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">           &lt;/</span>View&gt;</span><br><span class="line">       );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const styles = StyleSheet.create(&#123;</span><br><span class="line">  <span class="selector-tag">noMoveView</span>: &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200</span>,</span><br><span class="line">    height: <span class="number">200</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="selector-tag">noMoveView</span>: &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200</span>,</span><br><span class="line">    height: <span class="number">200</span>,</span><br><span class="line">    <span class="comment">/*绝对定位后，可使其脱离文档流，通过控制left，top来达到移动的效果*/</span></span><br><span class="line">    position: <span class="string">'absolute'</span>,</span><br><span class="line">    left: <span class="number">0</span>,</span><br><span class="line">    top: <span class="number">0</span>,</span><br><span class="line">    zIndex: <span class="number">999</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>   效果：</p>
+<h3 id="2、实现图片移动跟随"><a href="#2、实现图片移动跟随" class="headerlink" title="2、实现图片移动跟随"></a>2、实现图片移动跟随</h3><ol>
+<li><p>在手指触碰到屏幕时，记录当前触碰位置（在<code>onPanResponderGrant</code>中记录）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onPanResponderGrant: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// pageY是相对于根节点的位置，locationY是相对于元素自己</span></span><br><span class="line">    <span class="keyword">const</span> &#123; pageX, pageY, locationY, locationX &#125; = evt.nativeEvent;</span><br><span class="line">    <span class="comment">// 保存当前正确点击元素的位置，为了后面移动元素</span></span><br><span class="line">    <span class="keyword">this</span>.preY = pageY - locationY;   </span><br><span class="line">    <span class="comment">// 保存当前正确点击元素的位置，为了后面移动元素</span></span><br><span class="line">    <span class="keyword">this</span>.preX = pageX - locationX;   </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动时实时改变当前元素绝对定位的<code>left</code>和<code>top</code>属性值（在<code>onPanResponderMove</code>中改变）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">onPanResponderMove: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//若处于移动状态下</span></span><br><span class="line">    <span class="keyword">if</span> (self.state.isMove) &#123;</span><br><span class="line">        <span class="keyword">let</span> top = <span class="keyword">this</span>.preY + gestureState.dy;</span><br><span class="line">        <span class="keyword">let</span> left = <span class="keyword">this</span>.preX + gestureState.dx;</span><br><span class="line">        <span class="comment">//获取当前操作对象元素</span></span><br><span class="line">        <span class="keyword">let</span> item = <span class="keyword">this</span>.refs.refImage;</span><br><span class="line">        <span class="comment">//设置样式</span></span><br><span class="line">        item.setNativeProps(&#123;</span><br><span class="line">            style: &#123; <span class="attr">top</span>: top, <span class="attr">left</span>: left &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法"><a href="#3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法" class="headerlink" title="3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法"></a>3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法</h3><p>（<code>onPanResponderRelease</code>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onPanResponderRelease: <span class="function">(<span class="params">evt, gestureState</span>) =&gt;</span> &#123;</span><br><span class="line">    clearTimeout(<span class="built_in">window</span>.homeTimer);</span><br><span class="line">    self.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            isMove: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>React-Native中的手势系统</p>
+<p>​    优点：功能强大，可以借助此工具完成多指手指，滑动退出等功能</p>
+<p>   缺点：无法确定是哪一个元素触发事件，当点击某元素时，是无法直接获取该元素，需要通过手动计算得到</p>
+<h2 id="我的疑问"><a href="#我的疑问" class="headerlink" title="我的疑问"></a>我的疑问</h2><p>在手势系统中的通过<code>evt.nativeEvent.target</code>拿到的id值有何作用？</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月27日 10:16</p>
+        <p>原始链接： <a class="post-url" href="/2019/02/07/React-native中的手势系统/" title="React-native中的手势系统">https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/&title=《React-native中的手势系统》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566137461&di=b45f440108e50623e6385c627c9756a6&imgtype=jpg&er=1&src=http%3A%2F%2Fi1.hdslb.com%2Fbfs%2Farchive%2Fef7577f7fca3863d50faa9dad4a7204d745098ea.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/&title=《React-native中的手势系统》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React-native中的手势系统》 — Howl&url=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/02/07/React-native中的手势系统/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/React-Native/" class="color3">React-Native</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#React-native中的手势系统"><span class="post-toc-text">React-native中的手势系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#手势组件"><span class="post-toc-text">手势组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#react-native中预置的处理手势的组件"><span class="post-toc-text">react-native中预置的处理手势的组件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#手势系统"><span class="post-toc-text">手势系统</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用手势系统实现图片拖拽"><span class="post-toc-text">使用手势系统实现图片拖拽</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、实现长按-释放改变图片样式"><span class="post-toc-text">1、实现长按/释放改变图片样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、实现图片移动跟随"><span class="post-toc-text">2、实现图片移动跟随</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法"><span class="post-toc-text">3、实时监控图片位置，当满足位置条件并且手指离开屏幕时触发方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-text">结语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#我的疑问"><span class="post-toc-text">我的疑问</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/02/10/React-Native 获取地理信息/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          React-Native 获取地理信息决办法
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/01/29/React-Native 环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">React-Native 环境搭建</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

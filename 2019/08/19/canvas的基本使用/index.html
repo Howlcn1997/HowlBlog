@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Canvas的基本使用 | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="Canvas的基本使用 canvas 最早由Apple引入WebKit,用于Mac OS X 的 Dashboard,后来又在Safari和Google Chrome被实现。基于 Gecko 1.8的浏览器,比如 Firefox 1.5, 同样支持这个元素。&amp;lt;canvas&amp;gt; 元素是WhatWG Web applications 1.0规范的一部分,也包含于HTML 5中。    体验C">
+<meta name="keywords" content="笔记,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas的基本使用">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="Canvas的基本使用 canvas 最早由Apple引入WebKit,用于Mac OS X 的 Dashboard,后来又在Safari和Google Chrome被实现。基于 Gecko 1.8的浏览器,比如 Firefox 1.5, 同样支持这个元素。&amp;lt;canvas&amp;gt; 元素是WhatWG Web applications 1.0规范的一部分,也包含于HTML 5中。    体验C">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/location.jpg">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/zero.jpg">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/lineCap.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/lineJoin.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/01base.gif">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/02base.gif">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/bezier02.gif">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/bezier03.gif">
+<meta property="og:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/bezier04.gif">
+<meta property="og:updated_time" content="2019-09-02T03:00:45.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas的基本使用">
+<meta name="twitter:description" content="Canvas的基本使用 canvas 最早由Apple引入WebKit,用于Mac OS X 的 Dashboard,后来又在Safari和Google Chrome被实现。基于 Gecko 1.8的浏览器,比如 Firefox 1.5, 同样支持这个元素。&amp;lt;canvas&amp;gt; 元素是WhatWG Web applications 1.0规范的一部分,也包含于HTML 5中。    体验C">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2019/08/19/canvas的基本使用/location.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-canvas的基本使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Canvas的基本使用
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Canvas的基本使用"><a href="#Canvas的基本使用" class="headerlink" title="Canvas的基本使用"></a>Canvas的基本使用</h1><blockquote>
+<p>canvas 最早由Apple引入WebKit,用于Mac OS X 的 Dashboard,后来又在Safari和Google Chrome被实现。<br>基于 Gecko 1.8的浏览器,比如 Firefox 1.5, 同样支持这个元素。<br>&lt;canvas&gt; 元素是WhatWG Web applications 1.0规范的一部分,也包含于HTML 5中。  </p>
+</blockquote>
+<h3 id="体验Canvas"><a href="#体验Canvas" class="headerlink" title="体验Canvas"></a>体验Canvas</h3><h4 id="什么是Canvas？"><a href="#什么是Canvas？" class="headerlink" title="什么是Canvas？"></a>什么是Canvas？</h4><p>HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。<br>画布是一个矩形区域，您可以控制其每一像素。<br>canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。</p>
+<h4 id="创建Canvas元素"><a href="#创建Canvas元素" class="headerlink" title="创建Canvas元素"></a>创建Canvas元素</h4><p>向 HTML5 页面添加 canvas 元素。<br>规定元素的 id、宽度和高度：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--1.准备画布--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--1.1 画布是白色的 而且默认300*150--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--1.2 设置画布的大小  width="600" height="400" --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span> &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--2.准备绘制工具--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--3.利用工具绘图--&gt;</span></span><br></pre></td></tr></table></figure>
+<font color="red">注意：canvas的大小要在标签内定义，否则会出现意料之外的效果。</font>
+
+<h4 id="Canvas坐标系"><a href="#Canvas坐标系" class="headerlink" title="Canvas坐标系"></a>Canvas坐标系</h4><p><img src="/2019/08/19/canvas的基本使用/location.jpg" alt></p>
+<h4 id="通过JavaScript来绘制"><a href="#通过JavaScript来绘制" class="headerlink" title="通过JavaScript来绘制"></a>通过JavaScript来绘制</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*获取元素*/</span></span><br><span class="line"><span class="keyword">var</span> myCanvas = <span class="built_in">document</span>.querySelector(<span class="string">'#myCanvas'</span>);</span><br><span class="line"><span class="comment">/*获取上下文 绘制工具箱 */</span></span><br><span class="line"><span class="comment">/*目前canvas只支持2d*/</span></span><br><span class="line"><span class="comment">/*若要达到3d效果，需要想象一个3d坐标系后，再投影到canvas上*/</span></span><br><span class="line"><span class="comment">/*或者配合WebGL达到3d效果*/</span></span><br><span class="line"><span class="keyword">var</span> context = myCanvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"><span class="comment">/*设置绘图的起始位置*/</span></span><br><span class="line">context.moveTo(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line"><span class="comment">/*绘制路径*/</span></span><br><span class="line">context.lineTo(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line"><span class="comment">/*描边*/</span></span><br><span class="line">context.stroke();</span><br></pre></td></tr></table></figure>
+<h3 id="Canvas的基本使用-1"><a href="#Canvas的基本使用-1" class="headerlink" title="Canvas的基本使用"></a>Canvas的基本使用</h3><h4 id="图形绘制"><a href="#图形绘制" class="headerlink" title="图形绘制"></a>图形绘制</h4><p>1、开启新的路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br></pre></td></tr></table></figure>
+<p>2、画路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);  <span class="comment">//将画笔放置在100px 100px的位置</span></span><br><span class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>);  <span class="comment">//从（100，100）向（200，100）画一条轨迹</span></span><br><span class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);  <span class="comment">//从（200，100）向（200，200）画一条轨迹</span></span><br></pre></td></tr></table></figure>
+<p>此时，是看不出线条的，因为此时仅仅是一条没有颜色的轨迹。</p>
+<p>3、给路径描边（上色）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeStyle = <span class="string">"red"</span>; <span class="comment">//设置画笔颜色</span></span><br><span class="line">ctx.stroke();  <span class="comment">//开始描边</span></span><br></pre></td></tr></table></figure>
+<p>4、闭合路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.closePath();  <span class="comment">//将路径的起点与终点连接</span></span><br></pre></td></tr></table></figure>
+<h4 id="填充规则-非零环绕"><a href="#填充规则-非零环绕" class="headerlink" title="填充规则(非零环绕)"></a>填充规则(非零环绕)</h4><p><img src="/2019/08/19/canvas的基本使用/zero.jpg" alt></p>
+<h4 id="设置样式"><a href="#设置样式" class="headerlink" title="设置样式"></a>设置样式</h4><h5 id="画笔的状态"><a href="#画笔的状态" class="headerlink" title="画笔的状态"></a>画笔的状态</h5><ul>
+<li><p>lineWidth 线宽，默认1</p>
+</li>
+<li><p>lineCap 线末端类型：(butt默认)、round、square </p>
+<p><img src="/2019/08/19/canvas的基本使用/lineCap.png" alt="lineJoin"></p>
+</li>
+<li><p>lineJoin 相交线的拐点 miter(默认)、round、bevel</p>
+<p><img src="/2019/08/19/canvas的基本使用/lineJoin.png" alt="lineJoin"></p>
+</li>
+<li><p>strokeStyle 线的颜色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeStyle = <span class="string">"blue"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fillStyle 填充颜色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillStyle  = <span class="string">"blue"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setLineDash() 设置虚线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.setLineDash([<span class="number">50</span>,<span class="number">10</span>]);</span><br></pre></td></tr></table></figure>
+<p>setLineDash方法规定虚线的特征，它的参数是一个具有两个元素的数组。</p>
+<p>第一个数组元素规定虚线尺寸，也就是我们可见的部分，比如上面的红色小线段。</p>
+<p>第二个数组元素规定虚线与虚线之间的间隔，通过线段与间隔交替出现，构成了一个完整的虚线。</p>
+</li>
+<li><p>getLineDash() 获取虚线宽度集合</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(ctx.getLineDash());</span><br></pre></td></tr></table></figure>
+<p>打印结果：<code>(2) [500, 10]</code></p>
+</li>
+<li><p>lineDashOffset 设置虚线偏移量（负值向右偏移）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*如果是正的值 往后偏移*/</span></span><br><span class="line"><span class="comment">/*如果是负的值 往前偏移*/</span></span><br><span class="line"><span class="comment">/*ctx.lineDashOffset = 10;*/</span></span><br><span class="line">ctx.lineDashOffset = <span class="number">-10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="线性颜色渐变填充"><a href="#线性颜色渐变填充" class="headerlink" title="线性颜色渐变填充"></a>线性颜色渐变填充</h5><ul>
+<li><p>利用循环绘制从黑道白道的渐变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">255</span>; i++) &#123;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.moveTo(<span class="number">100</span>+i<span class="number">-1</span>,<span class="number">100</span>);</span><br><span class="line">    ctx.lineTo(<span class="number">100</span>+i,<span class="number">100</span>);</span><br><span class="line">    ctx.strokeStyle = <span class="string">'rgb('</span>+i+<span class="string">','</span>+i+<span class="string">','</span>+i+<span class="string">')'</span>;</span><br><span class="line">    ctx.stroke();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>createLinearGradient</p>
+<p>1、先利用createLinearGradient创建出一个颜色渐变的样式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1、确定渐变方向*/</span></span><br><span class="line"><span class="comment">/*渐变起点x  起点y   终点x  终点y*/</span></span><br><span class="line"><span class="comment">/*由（100px,100px）渐变至（500,400px）*/</span></span><br><span class="line"><span class="keyword">var</span> linearGradient = ctx.createLinearGradient(<span class="number">100</span>,<span class="number">100</span>,<span class="number">500</span>,<span class="number">400</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*调节起始与终止点的位置  使之在水平对齐  渐变效果为由上而下渐变*/</span></span><br><span class="line"><span class="comment">// var linearGradient = ctx.createLinearGradient(100,150,200,150);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*调节起始与终止点的位置  使之在垂直对齐  渐变效果为由左而右渐变*/</span></span><br><span class="line"><span class="comment">// var linearGradient = ctx.createLinearGradient(250,100,250,200);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*2、确定渐变颜色*/</span></span><br><span class="line"><span class="comment">/*位置（取值为0~1）   颜色*/</span></span><br><span class="line">linearGradient.addColorStop(<span class="number">0</span>,<span class="string">'pink'</span>);</span><br><span class="line">linearGradient.addColorStop(<span class="number">0.5</span>,<span class="string">'red'</span>);</span><br><span class="line">linearGradient.addColorStop(<span class="number">1</span>,<span class="string">'blue'</span>);</span><br></pre></td></tr></table></figure>
+<p>2、给画笔上渐变色！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillStyle = linearGradient;</span><br></pre></td></tr></table></figure>
+<p>3、填充</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.rect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">ctx.fill();  <span class="comment">//对stroke()失效</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="径向颜色渐变填充"><a href="#径向颜色渐变填充" class="headerlink" title="径向颜色渐变填充"></a>径向颜色渐变填充</h5><ul>
+<li><p>createRadialGradient(x0,y0,r0,x1,y1,r1,x2,y2,r2……)</p>
+<p>x0,y0,r0 第一个圆 圆心的x，圆心的y，圆心的半径</p>
+<p>。。。以此类推</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line"><span class="comment">//绘制一个以坐标点(100,100)为圆心、半径为50px的圆形</span></span><br><span class="line">ctx.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个表示放射性颜色渐变的CanvasGradient对象</span></span><br><span class="line"><span class="comment">//该对象的作用域是以(100,100)为圆心、半径为10px的内圆和以(100,100)为圆心、半径为50px的外圆之间的环状区域</span></span><br><span class="line"><span class="keyword">var</span> canvasGradient = ctx.createRadialGradient(<span class="number">100</span>, <span class="number">100</span>, <span class="number">10</span>, <span class="number">80</span>, <span class="number">100</span>, <span class="number">80</span>);</span><br><span class="line"><span class="comment">//在offset为0的位置(即内圆的圆圈处)添加一个蓝色的渐变</span></span><br><span class="line">canvasGradient.addColorStop(<span class="number">0</span>, <span class="string">"blue"</span>);</span><br><span class="line"><span class="comment">//在offset为0.5的位置(环状区域从内到外放射50%的中间位置)添加一个绿色的渐变</span></span><br><span class="line">canvasGradient.addColorStop(<span class="number">0.5</span>, <span class="string">"pink"</span>);</span><br><span class="line"><span class="comment">//在offset为0的位置(即外圆的圆圈处)添加一个红色的渐变</span></span><br><span class="line">canvasGradient.addColorStop(<span class="number">1</span>, <span class="string">"orange"</span>);</span><br><span class="line"><span class="comment">//将fillStyle的属性值设为该CanvasGradient对象</span></span><br><span class="line">ctx.fillStyle = canvasGradient;</span><br><span class="line">ctx.fill();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Canvas图形绘制"><a href="#Canvas图形绘制" class="headerlink" title="Canvas图形绘制"></a>Canvas图形绘制</h3><h4 id="矩形绘制"><a href="#矩形绘制" class="headerlink" title="矩形绘制"></a>矩形绘制</h4><ul>
+<li><p>rect(x,y,w,h) 只创造出矩形而不绘制（stroke  fill），也不结束绘画</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.rect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">100</span>); <span class="comment">//左上角x轴坐标  左上角y轴坐标 宽 高</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>strokeRect(x,y,w,h) 有独立路径，会自动绘制（stroke），自动结束绘画，不影响下次绘画。</p>
+</li>
+<li><p>fillRect(x,y,w,h) 有独立路径，不影响别的绘制</p>
+</li>
+<li><p>clearRect(x,y,w,h) 擦除矩形区域</p>
+</li>
+</ul>
+<h4 id="圆弧绘制"><a href="#圆弧绘制" class="headerlink" title="圆弧绘制"></a>圆弧绘制</h4><p>arc(x,y,r,startAngle,endAngle,anticlockwise)</p>
+<ul>
+<li>x 圆心横坐标</li>
+<li>y 圆心纵坐标</li>
+<li>r 半径</li>
+<li>startAngle 开始角度</li>
+<li>endAngle 结束角度</li>
+<li>anticlockwise 是否逆时针方向绘制（默认false表示顺时针；true表示逆时针）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.arc(<span class="number">200</span>,<span class="number">200</span>,<span class="number">150</span>,<span class="number">0</span>,<span class="built_in">Math</span>.PI/<span class="number">3</span>,<span class="literal">false</span>);  <span class="comment">//默认 顺时针</span></span><br><span class="line"><span class="comment">// context.arc(w/2,h/2,150,0,Math.PI/3,true);  //逆时针</span></span><br></pre></td></tr></table></figure>
+<h4 id="扇形的绘制"><a href="#扇形的绘制" class="headerlink" title="扇形的绘制"></a>扇形的绘制</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line"><span class="comment">// arc是紧接着上一次笔触的地方开始画</span></span><br><span class="line"><span class="comment">// ctx.beginPath();  //当重新开始路劲时效果会发生变化</span></span><br><span class="line">ctx.arc(<span class="number">200</span>,<span class="number">200</span>,<span class="number">100</span>,<span class="number">0</span>,<span class="built_in">Math</span>.PI/<span class="number">3</span>,<span class="literal">true</span>);  <span class="comment">//这里暗含着 lineTo(300,200);</span></span><br><span class="line">ctx.closePath();</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<h4 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h4><ul>
+<li>ctx.font = ‘微软雅黑’ 设置字体</li>
+<li>strokeText()</li>
+<li>fillText(text,x,y,maxWidth)<ul>
+<li>text 要绘制的文本</li>
+<li>x,y 文本绘制的坐标（文本左下角）</li>
+<li>maxWidth 设置文本最大宽度，可选参数</li>
+</ul>
+</li>
+<li>ctx.textAlign文本水平对齐方式，相对绘制坐标来说的<ul>
+<li>left</li>
+<li>center</li>
+<li>right</li>
+<li>start 默认</li>
+<li>end</li>
+</ul>
+</li>
+<li>ctx.direction属性css(rtl ltr) start和end于此相关<ul>
+<li>如果是ltr,start和left表现一致</li>
+<li>如果是rtl,start和right表现一致</li>
+</ul>
+</li>
+<li>ctx.textBaseline 设置基线（垂直对齐方式  ）<ul>
+<li>top 文本的基线处于文本的正上方，并且有一段距离</li>
+<li>middle 文本的基线处于文本的正中间</li>
+<li>bottom 文本的基线处于文本的证下方，并且有一段距离</li>
+<li>hanging 文本的基线处于文本的正上方，并且和文本粘合</li>
+<li>alphabetic 默认值，基线处于文本的下方，并且穿过文字</li>
+<li>ideographic 和bottom相似，但是不一样</li>
+</ul>
+</li>
+<li>measureText() 获取文本宽度obj.width</li>
+</ul>
+<h3 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h3><h4 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h4><p><img src="/2019/08/19/canvas的基本使用/01base.gif" alt="01base"></p>
+<p><img src="/2019/08/19/canvas的基本使用/02base.gif" alt="02base"></p>
+<p>一个点确定曲线（一次）</p>
+<p><img src="/2019/08/19/canvas的基本使用/bezier02.gif" alt="bezier02"></p>
+<p>两个点确定曲线（二次）</p>
+<p><img src="/2019/08/19/canvas的基本使用/bezier03.gif" alt="bezier03"></p>
+<p>三个点确定曲线（三次）</p>
+<p><img src="/2019/08/19/canvas的基本使用/bezier04.gif" alt="bezier04"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"500px"</span> <span class="attr">height</span>=<span class="string">"500px"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.拿到画布</span></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</span><br><span class="line"><span class="comment">//2.拿到画布的上下文</span></span><br><span class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.一次贝塞尔曲线</span></span><br><span class="line">context.beginPath();</span><br><span class="line">context.moveTo(<span class="number">300</span>,<span class="number">100</span>);</span><br><span class="line">context.quadraticCurveTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">300</span>);</span><br><span class="line">context.stroke();</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.二次贝塞尔曲线</span></span><br><span class="line">context.beginPath();</span><br><span class="line">context.moveTo(<span class="number">300</span>,<span class="number">100</span>);</span><br><span class="line">context.bezierCurveTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">300</span>,<span class="number">200</span>,<span class="number">400</span>);</span><br><span class="line">context.stroke();</span><br></pre></td></tr></table></figure>
+<h3 id="做动画"><a href="#做动画" class="headerlink" title="做动画"></a>做动画</h3><h4 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h4><h5 id="创建图片对象"><a href="#创建图片对象" class="headerlink" title="创建图片对象"></a>创建图片对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = <span class="string">"./image/img1.jpg"</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图片加载完毕 触发事件</span></span><br><span class="line">img.onload() = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//ctx.drawImage();</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
+<li>drawImage()<ul>
+<li>三个参数drawImage(img,x,y)<ul>
+<li>img 图片对象、canvas对象、video对象</li>
+<li>x,y 图片绘制的左上角</li>
+</ul>
+</li>
+<li>五个参数drawImage(img,x,y,w,h)<ul>
+<li>img 图片对象、canvas对象、video对象</li>
+<li>x,y 图片绘制的左上角</li>
+<li>w,h 图片绘制尺寸设置(图片缩放，不是截取)</li>
+</ul>
+</li>
+<li>九个参数drawImage(img,x,y,w,h,x1,y1,w1,h1)<ul>
+<li>img 图片对象、canvas对象、video对象</li>
+<li>x,y,w,h 图片中的一个矩形区域（从图片上截取一部分）</li>
+<li>x1,y1,w1,h1 画布中的一个矩形区域</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="坐标变换"><a href="#坐标变换" class="headerlink" title="坐标变换"></a>坐标变换</h4><ul>
+<li>平移 移动画布的原点<ul>
+<li>translate(x,y) 参数表示移动目标点的坐标</li>
+</ul>
+</li>
+<li>缩放<ul>
+<li>scale(x,y) 参数表示宽高的缩放比例</li>
+</ul>
+</li>
+<li>旋转<ul>
+<li>rotate(angle) 参数表示旋转角度</li>
+</ul>
+</li>
+</ul>
+<h4 id="绘制帧动画"><a href="#绘制帧动画" class="headerlink" title="绘制帧动画"></a>绘制帧动画</h4>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月02日 11:00</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/19/canvas的基本使用/" title="Canvas的基本使用">https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/&title=《Canvas的基本使用》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562080916459&di=bfc70c0619538b6d6a0d7433b08abc1d&imgtype=0&src=http%3A%2F%2Fimg.socialbeta.com%2Fwp%2F2014%2F12%2Fh5%25E8%2590%25A5%25E9%2594%25802_%25E5%2589%25AF%25E6%259C%25AC.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/&title=《Canvas的基本使用》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Canvas的基本使用》 — Howl&url=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/08/19/canvas的基本使用/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/笔记/" class="color3">笔记</a>
+      
+    <a href="/tags/HTML/" class="color5">HTML</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Canvas的基本使用"><span class="post-toc-text">Canvas的基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#体验Canvas"><span class="post-toc-text">体验Canvas</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是Canvas？"><span class="post-toc-text">什么是Canvas？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建Canvas元素"><span class="post-toc-text">创建Canvas元素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Canvas坐标系"><span class="post-toc-text">Canvas坐标系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过JavaScript来绘制"><span class="post-toc-text">通过JavaScript来绘制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Canvas的基本使用-1"><span class="post-toc-text">Canvas的基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图形绘制"><span class="post-toc-text">图形绘制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#填充规则-非零环绕"><span class="post-toc-text">填充规则(非零环绕)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置样式"><span class="post-toc-text">设置样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#画笔的状态"><span class="post-toc-text">画笔的状态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#线性颜色渐变填充"><span class="post-toc-text">线性颜色渐变填充</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#径向颜色渐变填充"><span class="post-toc-text">径向颜色渐变填充</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Canvas图形绘制"><span class="post-toc-text">Canvas图形绘制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#矩形绘制"><span class="post-toc-text">矩形绘制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#圆弧绘制"><span class="post-toc-text">圆弧绘制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扇形的绘制"><span class="post-toc-text">扇形的绘制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制文本"><span class="post-toc-text">绘制文本</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#贝塞尔曲线"><span class="post-toc-text">贝塞尔曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数学公式"><span class="post-toc-text">数学公式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#做动画"><span class="post-toc-text">做动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制图片"><span class="post-toc-text">绘制图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建图片对象"><span class="post-toc-text">创建图片对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#事件"><span class="post-toc-text">事件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法"><span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#坐标变换"><span class="post-toc-text">坐标变换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制帧动画"><span class="post-toc-text">绘制帧动画</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/09/19/urljs/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          URI.js
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/05/14/正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">正则表达式</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

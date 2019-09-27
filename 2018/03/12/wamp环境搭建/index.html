@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>wamp环境搭建 | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="wamp环境搭建一、wamp简介wamp是Windows Apache MySQL PHP的简称 Windows 操作系统 Apache 提供网页服务(html js css img) MySQL 数据库 PHP 编程语言，可以用来开发动态网站 二、下载与安装下载根据电脑系统下载 wampServer2.4 x86 x64 提取码:i3ti. （推荐安装32位） 安装前须知1  确保电脑安装了Mi">
+<meta name="keywords" content="搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wamp环境搭建">
+<meta property="og:url" content="https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="wamp环境搭建一、wamp简介wamp是Windows Apache MySQL PHP的简称 Windows 操作系统 Apache 提供网页服务(html js css img) MySQL 数据库 PHP 编程语言，可以用来开发动态网站 二、下载与安装下载根据电脑系统下载 wampServer2.4 x86 x64 提取码:i3ti. （推荐安装32位） 安装前须知1  确保电脑安装了Mi">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/安装检测.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/配置访问权限.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/重启服务器.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/修改默认根目录.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/更改默认根目录2.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/虚拟主机配置1.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/虚拟主机配置2.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/配置映射关系.png">
+<meta property="og:updated_time" content="2019-09-02T02:59:04.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wamp环境搭建">
+<meta name="twitter:description" content="wamp环境搭建一、wamp简介wamp是Windows Apache MySQL PHP的简称 Windows 操作系统 Apache 提供网页服务(html js css img) MySQL 数据库 PHP 编程语言，可以用来开发动态网站 二、下载与安装下载根据电脑系统下载 wampServer2.4 x86 x64 提取码:i3ti. （推荐安装32位） 安装前须知1  确保电脑安装了Mi">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2018/03/12/wamp环境搭建/安装检测.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-wamp环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      wamp环境搭建
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-03-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="wamp环境搭建"><a href="#wamp环境搭建" class="headerlink" title="wamp环境搭建"></a>wamp环境搭建</h1><h2 id="一、wamp简介"><a href="#一、wamp简介" class="headerlink" title="一、wamp简介"></a>一、wamp简介</h2><p>wamp是Windows Apache MySQL PHP的简称</p>
+<p>Windows 操作系统</p>
+<p>Apache 提供网页服务(html js css img)</p>
+<p>MySQL 数据库</p>
+<p>PHP 编程语言，可以用来开发动态网站</p>
+<h2 id="二、下载与安装"><a href="#二、下载与安装" class="headerlink" title="二、下载与安装"></a>二、下载与安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>根据电脑系统下载 <a href="https://pan.baidu.com/s/1b_8fp8Qsj9laXzxIeO5XCQ" target="_blank" rel="noopener">wampServer2.4 x86 x64</a> 提取码:i3ti.</p>
+<p>（推荐安装32位）</p>
+<h3 id="安装前须知"><a href="#安装前须知" class="headerlink" title="安装前须知"></a>安装前须知</h3><p>1  确保电脑安装了<a href="https://pan.baidu.com/s/1OfOwL8Qd6MCV8kSppBn6yA" target="_blank" rel="noopener">Microsoft Visual C++ 2012 Redistributable</a>提取码:0u1t;</p>
+<p>2  更新了<a href="https://pan.baidu.com/s/1_COl7-dFJZI-sjH3NzQ5Vg" target="_blank" rel="noopener">KB2999226</a> 提取码:s6w7;</p>
+<p>3  已卸载原有的数据库和Apache.</p>
+<p>安装wamp，傻瓜式安装即可.</p>
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>打开wamp  当任务栏中的W变为绿色，且再浏览器中输入localhost回车后出现wamp界面则本地服务器运行成功</p>
+<p><img src="/2018/03/12/wamp环境搭建/安装检测.png" alt="安装检测"></p>
+<h2 id="三、配置访问权限"><a href="#三、配置访问权限" class="headerlink" title="三、配置访问权限"></a>三、配置访问权限</h2><h3 id="更改权限"><a href="#更改权限" class="headerlink" title="更改权限"></a>更改权限</h3><p>想要其他设备访问到你的本地服务器需要进行如下操作</p>
+<p>打开 wamp –&gt; bin –&gt; apache –&gt; Apache2.4.4 –&gt; conf –&gt; httpd.conf文件，搜索关键词 Order</p>
+<p><img src="/2018/03/12/wamp环境搭建/配置访问权限.png" alt="配置访问权限"></p>
+<p>将此行修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Allow from all      //允许所有ip访问</span><br></pre></td></tr></table></figure>
+<p>右击wamp任务栏图片重启服务器（刷新失效时，请重启wamp）</p>
+<p><img src="/2018/03/12/wamp环境搭建/重启服务器.png" alt="重启服务器"></p>
+<p>PS：你当然也可以不将Deny from all 改为Allow from all，你可以在下方指定只有那些ip可以访问，如只允许192.168.32.222访问</p>
+<p>在下方添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Allow from 192.168.32.222</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>查询本机ip地址，cmd中键入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+<p>其中IPV4 后便是本机ip地址，如（192.168.32.2）</p>
+<p>在另一台设备中输入192.168.32.2，回车后访问成功（若显示访问被拒绝请确认配置正确，重启wamp，关闭防火墙后重试）</p>
+<h2 id="四、更改wamp默认服务器根目录"><a href="#四、更改wamp默认服务器根目录" class="headerlink" title="四、更改wamp默认服务器根目录"></a>四、更改wamp默认服务器根目录</h2><p>本地服务器的默认根目录是安装根目录下的www文件夹。</p>
+<p>可在该文件夹中新建一个index.html文件，再在浏览器中输入localhost/index.html访问该页面。</p>
+<p>更改默认目录</p>
+<p>打开 wamp –&gt; bin –&gt; apache –&gt; Apache2.4.4 –&gt; conf –&gt; httpd.conf文件，搜索关键词 DocumentRoot</p>
+<p><img src="/2018/03/12/wamp环境搭建/修改默认根目录.png" alt="修改默认根目录"></p>
+<p>将此两行的路径同时修改为你所创建的文件夹所在路径：</p>
+<p>我在桌面的ClassPC文件夹下创建了www文件夹，以此作为根目录，则DocumentRoot改为C:/Users/student/Desktop/ClassPC/www</p>
+<p><img src="/2018/03/12/wamp环境搭建/更改默认根目录2.png" alt="更改默认根目录2"></p>
+<p>重启wamp</p>
+<h2 id="五、虚拟主机配置"><a href="#五、虚拟主机配置" class="headerlink" title="五、虚拟主机配置"></a>五、虚拟主机配置</h2><p>配置虚拟主机，以支持多站点</p>
+<p>我们先在之前所设置好的服务器根目录(C:/Users/student/Desktop/ClassPC/www)下，新建三个文件夹 server1  server2  server3 (一个文件夹代表一个站点)</p>
+<h3 id="配置httpd-vhosts-conf"><a href="#配置httpd-vhosts-conf" class="headerlink" title="配置httpd-vhosts.conf"></a>配置httpd-vhosts.conf</h3><p>打开 wamp –&gt; bin –&gt; apache –&gt; Apache2.4.4 –&gt; conf –&gt; extra –&gt; httpd-vhosts.conf</p>
+<p><img src="/2018/03/12/wamp环境搭建/虚拟主机配置1.png" alt="虚拟主机配置1"></p>
+<p>一个<virtualhost></virtualhost>表示一个站点</p>
+<p>将已有标签复制三份，并分别设置其DocumentRoot  ServerName ServerAlias，如下图所示</p>
+<p><img src="/2018/03/12/wamp环境搭建/虚拟主机配置2.png" alt="虚拟主机配置2"></p>
+<h3 id="配置计算机映射关系"><a href="#配置计算机映射关系" class="headerlink" title="配置计算机映射关系"></a>配置计算机映射关系</h3><p>打开 计算机 –&gt; C: –&gt;windows –&gt; System32 –&gt; drivers –&gt; etc –&gt; host </p>
+<p>在最下方添加映射关系，如图</p>
+<p><img src="/2018/03/12/wamp环境搭建/配置映射关系.png" alt="配置映射关系"></p>
+<p>重启wamp</p>
+<p>浏览器输入localhost/server1,显示index of/server1,访问成功！</p>
+<p>其他机器浏览器输入192.168.32.2/server1,显示index of/server1,访问成功！</p>
+<p><hr><br>更新：若有购买腾讯云等云端服务器，在将Wamp部署到服务器时，请手动关闭Wamp自带的MySQL，MySQL的运行出错可能导致Apache的假死现象。</p>
+<p>更新：关于Apache服务器<code>(OS 64)指定的网络名不再可用。  : AH00341: winnt_accept: Asynchronous AcceptEx failed.</code>错误而导致的Apache假死现象的解决：</p>
+<ol>
+<li>apache版本为APAche2.0.49及以上版本，增加<code>Win32DisableAcceptEx</code>配置项</li>
+<li>apache版本为APAche2.4及以上版本，在<code>wamp\bin\apache\Apache2.4.4\conf\httpd.conf</code>增加<code>AcceptFilter http None AcceptFilter https None</code>配置项替代<code>Win32DisableAcceptEx</code></li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月02日 10:59</p>
+        <p>原始链接： <a class="post-url" href="/2018/03/12/wamp环境搭建/" title="wamp环境搭建">https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/&title=《wamp环境搭建》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557679727758&di=b052872fd8be5e7df5b113dac185f378&imgtype=0&src=http%3A%2F%2Foss.aliyuncs.com%2Fphotogallery%2Fphoto%2F1904996544835414%2F4507%2Fd1bf14ad-fbac-4b6e-946c-b2f20c61fdfc.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/&title=《wamp环境搭建》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wamp环境搭建》 — Howl&url=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2018/03/12/wamp环境搭建/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/搭建/" class="color3">搭建</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#wamp环境搭建"><span class="post-toc-text">wamp环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、wamp简介"><span class="post-toc-text">一、wamp简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、下载与安装"><span class="post-toc-text">二、下载与安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载"><span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装前须知"><span class="post-toc-text">安装前须知</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检测"><span class="post-toc-text">检测</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、配置访问权限"><span class="post-toc-text">三、配置访问权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更改权限"><span class="post-toc-text">更改权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-text">测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、更改wamp默认服务器根目录"><span class="post-toc-text">四、更改wamp默认服务器根目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、虚拟主机配置"><span class="post-toc-text">五、虚拟主机配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置httpd-vhosts-conf"><span class="post-toc-text">配置httpd-vhosts.conf</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置计算机映射关系"><span class="post-toc-text">配置计算机映射关系</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/04/01/Express/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Express
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/03/01/Js学习中的算法记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Js学习中的算法记录</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

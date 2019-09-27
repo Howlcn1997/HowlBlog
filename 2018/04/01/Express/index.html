@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Express | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN,HowlCN's Blog">
+  
+  <meta name="description" content="Express是基于Node.js平台，快速、开放极简的web开发框架 初始化 1npm init -y  //加-y时 会以默认参数创建package.json文件   若不加 可以自定义package.json参数信息 安装 1npm install express -save 自动重启服务器工具 1npm install nodemon  //若要使用该工具  在启动服务器时要使用nodem">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express">
+<meta property="og:url" content="https://HowlCN1997.github.io/2018/04/01/Express/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="Express是基于Node.js平台，快速、开放极简的web开发框架 初始化 1npm init -y  //加-y时 会以默认参数创建package.json文件   若不加 可以自定义package.json参数信息 安装 1npm install express -save 自动重启服务器工具 1npm install nodemon  //若要使用该工具  在启动服务器时要使用nodem">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:updated_time" content="2019-09-02T03:06:12.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Express">
+<meta name="twitter:description" content="Express是基于Node.js平台，快速、开放极简的web开发框架 初始化 1npm init -y  //加-y时 会以默认参数创建package.json文件   若不加 可以自定义package.json参数信息 安装 1npm install express -save 自动重启服务器工具 1npm install nodemon  //若要使用该工具  在启动服务器时要使用nodem">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN/HowlCN.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Express" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Express
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-04-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h1><p>是基于Node.js平台，快速、开放极简的web开发框架</p>
+<p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y  //加-y时 会以默认参数创建package.json文件   若不加 可以自定义package.json参数信息</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express -save</span><br></pre></td></tr></table></figure>
+<p>自动重启服务器工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install nodemon  //若要使用该工具  在启动服务器时要使用nodemon命令 如 nodemon ./server.js</span><br></pre></td></tr></table></figure>
+<p>路径的匹配</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配student开头，而且后面跟了学号   http://localhost:8000/student/1234</span></span><br><span class="line">app.get(<span class="string">"/student/:id/:name"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> id = req.params[<span class="string">"id"</span>];</span><br><span class="line">    <span class="keyword">var</span> name = req.params[<span class="string">"name"</span>];</span><br><span class="line">    res.send(id+name);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="中间件的另一种使用方式"><a href="#中间件的另一种使用方式" class="headerlink" title="中间件的另一种使用方式"></a>中间件的另一种使用方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f3 = <span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    res.send();</span><br><span class="line">&#125;</span><br><span class="line">app.use(<span class="string">'/user'</span>,[f1,f2,f3]);</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="next注意点"><a href="#next注意点" class="headerlink" title="next注意点"></a>next注意点</h2><p>有如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">//无门槛进入  只要是localhost:3000就会响应</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'有用户进入...函数一'</span>);</span><br><span class="line">    next(); <span class="comment">//通关文牒</span></span><br><span class="line">&#125;,(req,res,next)=&gt;&#123;  </span><br><span class="line">   	<span class="built_in">console</span>.log(<span class="string">'有用户进入...函数二'</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br><span class="line">app.use(<span class="string">'/user'</span>,(req,res,next)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'访问结束'</span>);</span><br><span class="line">    res.send(<span class="string">'用户页面'</span>+total);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>next() 不加参数时会指向下一个执行函数，即函数一中的next()会指向函数二</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">//无门槛进入  只要是localhost:3000就会响应</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'有用户进入...函数一'</span>);</span><br><span class="line">    next(<span class="string">'/user'</span>); <span class="comment">//通关文牒</span></span><br><span class="line">&#125;,(req,res,next)=&gt;&#123;  </span><br><span class="line">   	<span class="built_in">console</span>.log(<span class="string">'有用户进入...函数二'</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br><span class="line">app.use(<span class="string">'/user'</span>,(req,res,next)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'访问结束'</span>);</span><br><span class="line">    res.send(<span class="string">'用户页面'</span>+total);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>next(‘/user’) 加参数时，会跳转至下一个路径为/user的use函数，即跳过函数二直接来到下一个use函数</strong></p>
+<h2 id="body-parser的使用"><a href="#body-parser的使用" class="headerlink" title="body-parser的使用"></a>body-parser的使用</h2><p><strong>作用：可以获取post请求中信息</strong></p>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install body-parser --save</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//若要获取post中的参数 则必须以此挂载bodyparser中间件</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">false</span>&#125;));</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">'views'</span>));</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/login'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.send(<span class="string">'name:'</span>+req.body.username);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="错误处理中间件"><a href="#错误处理中间件" class="headerlink" title="错误处理中间件"></a>错误处理中间件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/index'</span>,(req,res,next)=&gt;&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">    	<span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a.toString()); <span class="comment">//null不能调用toString()  此处故意制造错误</span></span><br><span class="line">        next();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        next(e); <span class="comment">//转至错误处理中间件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误处理中间件（注意。错误处理中间件 要用use）</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err,req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// res.send(err); 无法打印</span></span><br><span class="line">    res.send(err.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="指定静态资源"><a href="#指定静态资源" class="headerlink" title="指定静态资源"></a>指定静态资源</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">'views'</span>));<span class="comment">//指定views文件夹为静态资源文件夹  若该文件夹中存在login.html 则可以通过http:localhost:3000/login.html来直接访问该页面</span></span><br></pre></td></tr></table></figure>
+<h2 id="Router类的使用"><a href="#Router类的使用" class="headerlink" title="Router类的使用"></a>Router类的使用</h2><p>1、先创建一个需要js文件，每一个js文件就是一个类</p>
+<p>每一个js文件中的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router(); <span class="comment">//创建router类</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/c1'</span>,(req,res)=&gt;&#123;  <span class="comment">//设置请求响应函数  /c1为访问路径</span></span><br><span class="line">    res.send(<span class="string">'/c1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">router.post(<span class="string">'/c2'</span>,(req,res)=&gt;&#123;<span class="comment">//设置请求响应函数</span></span><br><span class="line">    res.send(<span class="string">'/c2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;  <span class="comment">//将router暴露出去</span></span><br></pre></td></tr></table></figure>
+<p>2、当创建若干js文件（类）之后，用一个js文件进行汇总使用，相当于入口文件  此处创建server.js</p>
+<p>写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> chang = <span class="built_in">require</span>(<span class="string">'./chang'</span>); <span class="comment">//引入自定义的类</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/chang'</span>,chang);  <span class="comment">//访问方式 localhost:3000/chang/c1     //此处用use指定的/chang只是虚拟路径 并不存在真实的物理路径</span></span><br><span class="line"><span class="comment">//app.use(chang);   //访问方式 localhost:3000/c1 </span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="comment">//app.use(.....)</span></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这种使用方式相当于自定义了中间件后，再在server中使用。</p>
+<h2 id="art-template的使用"><a href="#art-template的使用" class="headerlink" title="art-template的使用"></a>art-template的使用</h2><h3 id="art-template在前台的使用"><a href="#art-template在前台的使用" class="headerlink" title="art-template在前台的使用"></a>art-template在前台的使用</h3><p><strong>下载</strong><a href="http://aui.github.io/art-template/docs/installation.html" target="_blank" rel="noopener">art-template-web</a></p>
+<p>1、将art-template-web.js引入到页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./template-web.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、在页面中定义一个模板</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/此script标签相当于一个容器</span></span><br><span class="line"><span class="regexp">&lt;script id="test" type="text/</span>html<span class="string">"&gt; //注意 此处一定要加上  type="</span>text/html<span class="string">"</span></span><br><span class="line"><span class="string">    &#123;&#123;each users&#125;&#125;</span></span><br><span class="line"><span class="string">        &lt;h1&gt;&#123;&#123;$value.name&#125;&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;&#123;&#123;$value.age&#125;&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;&#123;&#123;$value.gender&#125;&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;&#123;&#123;$value.love&#125;&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="string">    &#123;&#123;/each&#125;&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">    var data = &#123;</span></span><br><span class="line"><span class="string">        users:[&#123;name: '张三', age: 12, gender: '女', love: '唱'&#125;,</span></span><br><span class="line"><span class="string">               &#123;name: '李四', age: 13, gender: '男', love: '跳'&#125;,</span></span><br><span class="line"><span class="string">               &#123;name: '王五', age: 14, gender: '女', love: 'rap'&#125;,</span></span><br><span class="line"><span class="string">               &#123;name: '蔡徐坤', age: 15, gender: '女', love: '篮球'&#125;]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    //如果数组中都是对象，且要访问对象内的值时要使用$value.xxx  value代表当前遍历到的数组元素</span></span><br><span class="line"><span class="string">    var html = template('test',data);</span></span><br><span class="line"><span class="string">    var box = document.getElementById('box');</span></span><br><span class="line"><span class="string">    box.innerHTML = html;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>另一种实现方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">//当使用此法时 模板字符串拼接时  每一个标签要单独用 "" 括起来</span></span><br><span class="line">    <span class="keyword">var</span> artt = <span class="string">"&#123;&#123;each users&#125;&#125;"</span>+</span><br><span class="line">        <span class="string">"&lt;h1&gt;&#123;&#123;$value.name&#125;&#125;&lt;/h1&gt;"</span>+</span><br><span class="line">        <span class="string">"&lt;li&gt;&#123;&#123;$value.age&#125;&#125;&lt;/li&gt;"</span>+</span><br><span class="line">        <span class="string">"&lt;li&gt;&#123;&#123;$value.gender&#125;&#125;&lt;/li&gt;"</span>+</span><br><span class="line">        <span class="string">"&lt;li&gt;&#123;&#123;$value.love&#125;&#125;&lt;/li&gt;"</span>+</span><br><span class="line">    <span class="string">"&#123;&#123;/each&#125;&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> render = template.compile(artt);</span><br><span class="line">    <span class="keyword">var</span> data = &#123;</span><br><span class="line">        users:[&#123;<span class="attr">name</span>: <span class="string">'张三'</span>, <span class="attr">age</span>: <span class="number">12</span>, <span class="attr">gender</span>: <span class="string">'女'</span>, <span class="attr">love</span>: <span class="string">'唱'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">name</span>: <span class="string">'李四'</span>, <span class="attr">age</span>: <span class="number">13</span>, <span class="attr">gender</span>: <span class="string">'男'</span>, <span class="attr">love</span>: <span class="string">'跳'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">name</span>: <span class="string">'王五'</span>, <span class="attr">age</span>: <span class="number">14</span>, <span class="attr">gender</span>: <span class="string">'女'</span>, <span class="attr">love</span>: <span class="string">'rap'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">name</span>: <span class="string">'蔡徐坤'</span>, <span class="attr">age</span>: <span class="number">15</span>, <span class="attr">gender</span>: <span class="string">'女'</span>, <span class="attr">love</span>: <span class="string">'篮球'</span>&#125;]</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//如果数组中都是对象，且要访问对象内的值时要使用$value.xxx  value代表当前遍历到的数组元素</span></span><br><span class="line">    <span class="keyword">var</span> html = render(data);</span><br><span class="line">    <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line">    box.innerHTML = html;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="art-template在后台中的使用"><a href="#art-template在后台中的使用" class="headerlink" title="art-template在后台中的使用"></a>art-template在后台中的使用</h3><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install art-template --save</span><br><span class="line">npm install express-art-template --save</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定art-template渲染的文件后缀是html</span></span><br><span class="line">app.engine(<span class="string">'html'</span>,<span class="built_in">require</span>(<span class="string">'express-art-template'</span>));</span><br><span class="line"><span class="comment">//指定静态资源目录</span></span><br><span class="line">app.use(express.static(<span class="string">'views'</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/node'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="comment">//当调用render()函数时，它默认会在views中寻找node.html</span></span><br><span class="line">    <span class="comment">//当然也可以自定义指定render()寻找的目录</span></span><br><span class="line">    <span class="comment">//app.set('myviews',__dirname+'/myviews')</span></span><br><span class="line">    <span class="comment">//render是将内容渲染到node.html中</span></span><br><span class="line">    res.render(<span class="string">'node.html'</span>,&#123;</span><br><span class="line">        name:req.query.name,</span><br><span class="line">        age:req.query.age</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><p>css.art</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        background-color: pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>body.art</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;切歌&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<p>script.art</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    alert(&apos;script模板被使用&apos;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>layout.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>我是个被继承的html 我负责挖坑<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    &#123;&#123;include './css.art'&#125;&#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">&#123;&#123;include './body.art'&#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123;block 'body'&#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123;/block&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;include './script.art'&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;extend '../layout.html'&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;block 'body'&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span> 你来挖坑 我来填 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;&#123;/block&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>server.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.engine(<span class="string">'html'</span>,<span class="built_in">require</span>(<span class="string">'express-art-template'</span>));</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/index'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.render(<span class="string">'index.html'</span>);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、&#123;&#123;include &apos; 文件名 &apos; &#125;&#125;  相当于将该文件的内容替换到该位置</span><br><span class="line"></span><br><span class="line">2、&#123;&#123;block &apos;body&apos;&#125;&#125;  &#123;&#123;/block&#125;&#125;  在被继承文件中 相当于占了个位置</span><br><span class="line"></span><br><span class="line">3、&#123;&#123;extend &apos; 文件名 &apos;&#125;&#125;    A文件继承该文件后，在A文件中的&#123;&#123;block &apos;body&apos;&#125;&#125;  &#123;&#123;/block&#125;&#125;中加入内容相当于填坑</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月02日 11:06</p>
+        <p>原始链接： <a class="post-url" href="/2018/04/01/Express/" title="Express">https://HowlCN1997.github.io/2018/04/01/Express/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2018/04/01/Express/&title=《Express》 — Howl&pic=https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3589619187,2148873006&fm=26&gp=0.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2018/04/01/Express/&title=《Express》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2018/04/01/Express/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Express》 — Howl&url=https://HowlCN1997.github.io/2018/04/01/Express/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2018/04/01/Express/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2018/04/01/Express/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/笔记/" class="color3">笔记</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Express"><span class="post-toc-text">Express</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中间件的另一种使用方式"><span class="post-toc-text">中间件的另一种使用方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#next注意点"><span class="post-toc-text">next注意点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#body-parser的使用"><span class="post-toc-text">body-parser的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误处理中间件"><span class="post-toc-text">错误处理中间件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定静态资源"><span class="post-toc-text">指定静态资源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Router类的使用"><span class="post-toc-text">Router类的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#art-template的使用"><span class="post-toc-text">art-template的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#art-template在前台的使用"><span class="post-toc-text">art-template在前台的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#art-template在后台中的使用"><span class="post-toc-text">art-template在后台中的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模板继承"><span class="post-toc-text">模板继承</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/04/02/webpack的基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          webpack的基本使用
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/03/12/wamp环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">wamp环境搭建</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN.github.io">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
