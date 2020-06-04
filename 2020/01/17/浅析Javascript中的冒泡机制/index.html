@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>Javascript中的冒泡机制 | Howl</title>
@@ -12,18 +12,18 @@
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript中的冒泡机制">
-<meta property="og:url" content="https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/index.html">
+<meta property="og:url" content="https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/index.html">
 <meta property="og:site_name" content="Howl">
 <meta property="og:description" content="浅析Javascript中的冒泡机制气泡会从水底向上移动到水面，这就是冒泡。Javascript中的冒泡机制就是将事件当作气泡，由内而外冒出去。 1、事件的发生过程一个事件从发生到执行有三个过程： 1.事件的捕获阶段：从外到内 2.事件的目标阶段：目标元素本身 3.事件的冒泡阶段：从内向外 为了解释这个问题，我们来举个例子：  当我们点击div2时，首先会进入事件的捕获阶段： 先由外到里来找事件的">
 <meta property="og:locale" content="en zh-cn">
-<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/事件触发.png">
-<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/界面预览.png">
-<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/执行结果.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/事件触发.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/界面预览.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/执行结果.png">
 <meta property="og:updated_time" content="2019-04-19T10:47:07.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中的冒泡机制">
 <meta name="twitter:description" content="浅析Javascript中的冒泡机制气泡会从水底向上移动到水面，这就是冒泡。Javascript中的冒泡机制就是将事件当作气泡，由内而外冒出去。 1、事件的发生过程一个事件从发生到执行有三个过程： 1.事件的捕获阶段：从外到内 2.事件的目标阶段：目标元素本身 3.事件的冒泡阶段：从内向外 为了解释这个问题，我们来举个例子：  当我们点击div2时，首先会进入事件的捕获阶段： 先由外到里来找事件的">
-<meta name="twitter:image" content="https://howlcn1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/事件触发.png">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/事件触发.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -60,7 +60,7 @@
                         <span>文章</span>
                     </a>
                     
-                    <a href="/about">
+                    <a  href="/about">
                         <i class="fa fa-user"></i>
                         <span>关于</span>
                     </a>
@@ -102,10 +102,10 @@
                         <a title="Github" target="_blank" href="//github.com/HowlCN1997/HowlCN1997.github.io">
                             <i class="fa fa-github fa-2x"></i></a>
                     
-                        <a title="Weibo" href="/">
+                        <a title="Weibo"  href="/">
                             <i class="fa fa-weibo fa-2x"></i></a>
                     
-                        <a title="Twitter" href="/">
+                        <a title="Twitter"  href="/">
                             <i class="fa fa-twitter fa-2x"></i></a>
                     
                 </div>
@@ -127,7 +127,7 @@
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-09-27
+          <i class="fa fa-calendar"></i>  2020-01-17
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -149,7 +149,7 @@
 <p>2.事件的目标阶段：目标元素本身</p>
 <p>3.事件的冒泡阶段：从内向外</p>
 <p>为了解释这个问题，我们来举个例子：</p>
-<p><img src="/2019/09/27/浅析Javascript中的冒泡机制/事件触发.png" alt="事件触发"></p>
+<p><img src="/2020/01/17/浅析Javascript中的冒泡机制/事件触发.png" alt="事件触发"></p>
 <p>当我们点击div2时，首先会进入事件的捕获阶段：</p>
 <p>先由外到里来找事件的真正触发者，操作系统–&gt;对应应用程序–&gt;window–&gt;body–&gt;div1–&gt;div2；</p>
 <p>再到事件的第二阶段：确定事件的真正触发者是div2；</p>
@@ -163,10 +163,10 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"red"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"yellow"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Javascript代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> red = GEBID$(<span class="string">'red'</span>);</span><br><span class="line"><span class="keyword">var</span> yellow = GEBID$(<span class="string">'yellow'</span>);</span><br><span class="line"><span class="keyword">var</span> blue = GEBID$(<span class="string">'blue'</span>);</span><br><span class="line"></span><br><span class="line">blue.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;  <span class="comment">//这里的 e 便是触发事件（点击事件）</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'蓝色'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(e.target);  <span class="comment">//e.target  触发事件的对象元素（触发对象）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*yellow.onclick = function(e)&#123;</span></span><br><span class="line"><span class="comment">    console.log('黄色');</span></span><br><span class="line"><span class="comment">    console.log(e.target);</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"></span><br><span class="line">red.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'红色'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(e.target);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/27/浅析Javascript中的冒泡机制/界面预览.png" alt="界面预览"></p>
+<p><img src="/2020/01/17/浅析Javascript中的冒泡机制/界面预览.png" alt="界面预览"></p>
 <p><a href="界面预览.png"><button style="background-color: #fff;color:skyblue;border-radius: 6px;border: 2px dashed skyblue;">界面预览</button></a></p>
 <p>当我们点击blue时，bule的onclick被触发，查看blue中是否有onclik事件，若有则执行输出语句，执行结束后会根据冒泡机制向上一层传递事件和触发对象至yellow，但此时yellow中并未绑定onclick事件，所以不执行输出语句，继续向上传递；到red后，由于red绑定了onclick事件，则执行输出语句；在传递给body……控制台结果如下：</p>
-<p><img src="/2019/09/27/浅析Javascript中的冒泡机制/执行结果.png" alt="执行结果"></p>
+<p><img src="/2020/01/17/浅析Javascript中的冒泡机制/执行结果.png" alt="执行结果"></p>
 <p>我们发现：虽然red也执行了它自身的事件函数，但是触发对象却仍然是blue。这是因为虽然我们没有点击red，但是我们点击了blue，而blue会将这一点击信号通过冒泡机制向上传递，传递过程中只要遇到绑定有onclick事件的元素便会触发其事件函数，但这沿路走过的一直都是我们最初所点击的那位始作俑者。</p>
 <font color="red"><strong>值得注意的是：</strong></font>
 
@@ -179,7 +179,7 @@
             <div class="post-copyright">
     <div class="content">
         <p>最后更新： 2019年04月19日 18:47</p>
-        <p>原始链接： <a class="post-url" href="/2019/09/27/浅析Javascript中的冒泡机制/" title="Javascript中的冒泡机制">https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/</a></p>
+        <p>原始链接： <a class="post-url" href="/2020/01/17/浅析Javascript中的冒泡机制/" title="Javascript中的冒泡机制">https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/</a></p>
         <footer>
             <a href="https://HowlCN1997.github.io">
                 <img src="/images/logo.png" alt="HowlCN">
@@ -236,7 +236,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/&title=《Javascript中的冒泡机制》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555680480456&di=aad6202b805fdc871dd6fadb2898764f&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111031%2F7655688_202745052000_2.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/&title=《Javascript中的冒泡机制》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555680480456&di=aad6202b805fdc871dd6fadb2898764f&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111031%2F7655688_202745052000_2.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -246,22 +246,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/&title=《Javascript中的冒泡机制》 — Howl&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/&title=《Javascript中的冒泡机制》 — Howl&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Javascript中的冒泡机制》 — Howl&url=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/&via=https://HowlCN1997.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Javascript中的冒泡机制》 — Howl&url=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/&via=https://HowlCN1997.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -271,7 +271,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/09/27/浅析Javascript中的冒泡机制/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2020/01/17/浅析Javascript中的冒泡机制/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -303,19 +303,19 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/09/27/简述Js中的原型与原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/17/函数原型/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          简述Js中的原型与原型链
+          函数原型
         
       </span>
     </a>
   
   
-    <a href="/2019/09/27/函数原型/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">函数原型</span>
+    <a href="/2019/11/12/React + socket.io 实现简易聊天室/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">React + socket.io 实现简易聊天室</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -332,10 +332,10 @@
     <div id="footer-info" class="inner">
       
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -344,7 +344,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2019 HowlCN<br>
+      &copy; 2020 HowlCN<br>
       </p>
     </div>
   </div>
@@ -403,7 +403,7 @@
             </li>
             
             <li>
-                <a href="/about">
+                <a  href="/about">
                     <i class="fa fa-user"></i><span>关于</span>
                 </a>
             </li>

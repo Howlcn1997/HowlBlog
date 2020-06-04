@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Javascript 日常记录 | Howl</title>
+  <title>工具函数记录 | Howl</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="HowlCN1997,HowlCN1997 Blog,HowlCN,HowlCN Blog">
   
-  <meta name="description" content="Javascript 日常记录1、【数组去重】     四行代码原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;">
+  <meta name="description" content="工具函数1、数组去重原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;script&amp;gt;    var obje">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript 日常记录">
-<meta property="og:url" content="https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/index.html">
+<meta property="og:title" content="工具函数记录">
+<meta property="og:url" content="https://HowlCN1997.github.io/2019/08/24/工具函数记录/index.html">
 <meta property="og:site_name" content="Howl">
-<meta property="og:description" content="Javascript 日常记录1、【数组去重】     四行代码原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;">
+<meta property="og:description" content="工具函数1、数组去重原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;script&amp;gt;    var obje">
 <meta property="og:locale" content="en zh-cn">
-<meta property="og:updated_time" content="2019-11-12T02:18:54.000Z">
+<meta property="og:updated_time" content="2019-11-12T12:10:45.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript 日常记录">
-<meta name="twitter:description" content="Javascript 日常记录1、【数组去重】     四行代码原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;">
+<meta name="twitter:title" content="工具函数记录">
+<meta name="twitter:description" content="工具函数1、数组去重原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作 若有数组: 1arr = [&amp;apos;a&amp;apos;,&amp;apos;v&amp;apos;,&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;e&amp;apos;,&amp;apos;b&amp;apos;,&amp;apos;w&amp;apos;,&amp;apos;x&amp;apos;] 123456&amp;lt;script&amp;gt;    var obje">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-Javascript日常记录" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-工具函数记录" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Javascript 日常记录
+      工具函数记录
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -139,7 +139,7 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h1 id="Javascript-日常记录"><a href="#Javascript-日常记录" class="headerlink" title="Javascript 日常记录"></a>Javascript 日常记录</h1><h2 id="1、【数组去重】-四行代码"><a href="#1、【数组去重】-四行代码" class="headerlink" title="1、【数组去重】     四行代码"></a>1、【数组去重】     四行代码</h2><p>原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作</p>
+            <h1 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数"></a>工具函数</h1><h2 id="1、数组去重"><a href="#1、数组去重" class="headerlink" title="1、数组去重"></a>1、数组去重</h2><p>原理：利用Js中对象的属性名不可重复的特点对数组进行去重操作</p>
 <p>若有数组:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = [&apos;a&apos;,&apos;v&apos;,&apos;a&apos;,&apos;b&apos;,&apos;e&apos;,&apos;b&apos;,&apos;w&apos;,&apos;x&apos;]</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> object = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> arr)</span><br><span class="line">        <span class="keyword">if</span>(!object[arr[key]])</span><br><span class="line">            object[arr[key]] = <span class="number">1</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
@@ -156,11 +156,13 @@
 <p>测试</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">'ss'</span>;</span><br><span class="line"><span class="keyword">var</span> d;</span><br><span class="line"><span class="keyword">var</span> e = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> f = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">var</span> g = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> h = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> i = [];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(checkType(a));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(b));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(c));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(d));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(e));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(f));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(g));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(h));</span><br><span class="line"><span class="built_in">console</span>.log(checkType(i));</span><br></pre></td></tr></table></figure>
 <h2 id="4、什么时候-val-1-amp-amp-val-2-amp-amp-val-3-为-true？"><a href="#4、什么时候-val-1-amp-amp-val-2-amp-amp-val-3-为-true？" class="headerlink" title="4、什么时候 val === 1 &amp;&amp; val === 2 &amp;&amp; val === 3 为 true？"></a>4、什么时候 val === 1 &amp;&amp; val === 2 &amp;&amp; val === 3 为 true？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i= <span class="number">0</span>;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">window</span>,<span class="string">'val'</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>:function()&#123;</span><br><span class="line">        <span class="keyword">return</span> ++i;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>:function()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'set'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(val === <span class="number">1</span> &amp;&amp; val === <span class="number">2</span> &amp;&amp; val === <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<hr>
+<h2 id="5、计算一段文本的宽度"><a href="#5、计算一段文本的宽度" class="headerlink" title="5、计算一段文本的宽度"></a>5、计算一段文本的宽度</h2><p><strong>React</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @name: text-width ;</span></span><br><span class="line"><span class="comment"> * @author: admin ;</span></span><br><span class="line"><span class="comment"> * @description: 获取字符串宽度 ;</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">import</span> memoize <span class="keyword">from</span> <span class="string">'lodash/memoize'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> memoize(<span class="function">(<span class="params">text, fontSize, options</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;fontFamily, fontWeight&#125; = <span class="built_in">Object</span>.assign(&#123;<span class="attr">fontFamily</span>: <span class="string">'Arial'</span>, <span class="attr">fontWeight</span>: <span class="string">'normal'</span>&#125;, options);</span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>),</span><br><span class="line">          ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">    ctx.font = <span class="string">`<span class="subst">$&#123;fontSize&#125;</span> <span class="subst">$&#123;fontFamily&#125;</span> <span class="subst">$&#123;fontWeight&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">return</span> ctx.measureText(text).width;</span><br><span class="line">&#125;, (text, fontSize, options) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> obj = <span class="built_in">Object</span>.assign(&#123;&#125;, options, &#123;text, fontSize&#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).map(<span class="function">(<span class="params">key</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>-<span class="subst">$&#123;obj[key]&#125;</span>`</span>).join(<span class="string">','</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年11月12日 10:18</p>
-        <p>原始链接： <a class="post-url" href="/2019/08/24/Javascript日常记录/" title="Javascript 日常记录">https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/</a></p>
+        <p>最后更新： 2019年11月12日 20:10</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/24/工具函数记录/" title="工具函数记录">https://HowlCN1997.github.io/2019/08/24/工具函数记录/</a></p>
         <footer>
             <a href="https://HowlCN1997.github.io">
                 <img src="/images/logo.png" alt="HowlCN">
@@ -217,7 +219,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/&title=《Javascript 日常记录》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555504582665&di=10d950dc1028d357cccb2ab460fcf7bc&imgtype=0&src=http%3A%2F%2Fimages.lusongsong.com%2Fdown%2Fzb_users%2Fupload%2F2017%2F01%2F201701021546_121.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/08/24/工具函数记录/&title=《工具函数记录》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555504582665&di=10d950dc1028d357cccb2ab460fcf7bc&imgtype=0&src=http%3A%2F%2Fimages.lusongsong.com%2Fdown%2Fzb_users%2Fupload%2F2017%2F01%2F201701021546_121.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -227,22 +229,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/&title=《Javascript 日常记录》 — Howl&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/08/24/工具函数记录/&title=《工具函数记录》 — Howl&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/08/24/工具函数记录/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Javascript 日常记录》 — Howl&url=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/&via=https://HowlCN1997.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《工具函数记录》 — Howl&url=https://HowlCN1997.github.io/2019/08/24/工具函数记录/&via=https://HowlCN1997.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/08/24/工具函数记录/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -252,7 +254,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/08/24/Javascript日常记录/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/08/24/工具函数记录/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -277,26 +279,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Javascript-日常记录"><span class="post-toc-text">Javascript 日常记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、【数组去重】-四行代码"><span class="post-toc-text">1、【数组去重】     四行代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、在字符串中找到所有的字符-o，并返回其下标"><span class="post-toc-text">2、在字符串中找到所有的字符 o，并返回其下标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3、返回给定参数的数据类型"><span class="post-toc-text">3、返回给定参数的数据类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、什么时候-val-1-amp-amp-val-2-amp-amp-val-3-为-true？"><span class="post-toc-text">4、什么时候 val === 1 &amp;&amp; val === 2 &amp;&amp; val === 3 为 true？</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工具函数"><span class="post-toc-text">工具函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、数组去重"><span class="post-toc-text">1、数组去重</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、在字符串中找到所有的字符-o，并返回其下标"><span class="post-toc-text">2、在字符串中找到所有的字符 o，并返回其下标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3、返回给定参数的数据类型"><span class="post-toc-text">3、返回给定参数的数据类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、什么时候-val-1-amp-amp-val-2-amp-amp-val-3-为-true？"><span class="post-toc-text">4、什么时候 val === 1 &amp;&amp; val === 2 &amp;&amp; val === 3 为 true？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5、计算一段文本的宽度"><span class="post-toc-text">5、计算一段文本的宽度</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2019/09/19/urljs/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/24/Javascript日常记录/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          URI.js
+          Javascript 日常记录
         
       </span>
     </a>
   
   
-    <a href="/2019/08/24/工具函数记录/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">工具函数记录</span>
+    <a href="/2019/08/19/canvas的基本使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Canvas的基本使用</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>简述Js中的原型与原型链 | Howl</title>
@@ -12,17 +12,17 @@
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简述Js中的原型与原型链">
-<meta property="og:url" content="https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/index.html">
+<meta property="og:url" content="https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/index.html">
 <meta property="og:site_name" content="Howl">
 <meta property="og:description" content="简述Js中的原型与原型链1、原型​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。 ​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。 ​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是">
 <meta property="og:locale" content="en zh-cn">
-<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/三者关系.png">
-<meta property="og:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/原型链.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2020/01/17/简述Js中的原型与原型链/三者关系.png">
+<meta property="og:image" content="https://howlcn1997.github.io/2020/01/17/简述Js中的原型与原型链/原型链.png">
 <meta property="og:updated_time" content="2019-09-27T02:24:40.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简述Js中的原型与原型链">
 <meta name="twitter:description" content="简述Js中的原型与原型链1、原型​    Javascript是基于对象的编程语言，他其中也含有部分封装、继承的概念，而原型概念便是基于继承的。 ​    函数的原型类似于面向对象语言中子类的父类，而函数本身类似于子类。函数继承了函数原型中的属性和方法，即函数本身可以调用它原型中的属性和方法。 ​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是">
-<meta name="twitter:image" content="https://howlcn1997.github.io/2019/09/27/简述Js中的原型与原型链/三者关系.png">
+<meta name="twitter:image" content="https://howlcn1997.github.io/2020/01/17/简述Js中的原型与原型链/三者关系.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -59,7 +59,7 @@
                         <span>文章</span>
                     </a>
                     
-                    <a href="/about">
+                    <a  href="/about">
                         <i class="fa fa-user"></i>
                         <span>关于</span>
                     </a>
@@ -101,10 +101,10 @@
                         <a title="Github" target="_blank" href="//github.com/HowlCN1997/HowlCN1997.github.io">
                             <i class="fa fa-github fa-2x"></i></a>
                     
-                        <a title="Weibo" href="/">
+                        <a title="Weibo"  href="/">
                             <i class="fa fa-weibo fa-2x"></i></a>
                     
-                        <a title="Twitter" href="/">
+                        <a title="Twitter"  href="/">
                             <i class="fa fa-twitter fa-2x"></i></a>
                     
                 </div>
@@ -126,7 +126,7 @@
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-09-27
+          <i class="fa fa-calendar"></i>  2020-01-17
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -147,7 +147,7 @@
 <p>​    知识点：若有函数Person，则它的函数原型为Person.prototype，函数原型本身是个对象。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.type = <span class="string">'human'</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'说话了'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//此时我们用Person构造函数构造了一个p对象</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'小王'</span>);</span><br><span class="line"><span class="comment">//我们打印p.name</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name); <span class="comment">//结果是'小王'，因为Preson函数中已经预置了name属性并且接受了new对象时传入的'小王'，结果勿容置疑</span></span><br><span class="line"><span class="comment">//我们再打印p.type 调用p.sayName()  按常理说Preson构造函数中是不存在type属性和sayName方法，若调用应该会报错</span></span><br><span class="line"><span class="built_in">console</span>.log(p.type); <span class="comment">//结果  human</span></span><br><span class="line">p.sayName(); <span class="comment">// 结果  小王说话了</span></span><br><span class="line"><span class="comment">//结果和我们预想的不同，这是为什么呢?</span></span><br><span class="line"><span class="comment">//因为Person继承了它原型Person.prototype中的信息，当调用p.type时，会优先在Person类中找该属性，若找到了则直接使用，若没找到则在他的原型中找并使用。因为我们设置了Person原型的type属性的，则p可以直接使用</span></span><br></pre></td></tr></table></figure>
 <p>在上面的例子中涉及到了 构造函数、对象和函数原型，接下来给出三者之间的关系图；</p>
-<h2 id="2、构造函数、实例、原型三者之间的关系"><a href="#2、构造函数、实例、原型三者之间的关系" class="headerlink" title="2、构造函数、实例、原型三者之间的关系"></a>2、构造函数、实例、原型三者之间的关系</h2><p><img src="/2019/09/27/简述Js中的原型与原型链/三者关系.png" alt="三者关系"></p>
+<h2 id="2、构造函数、实例、原型三者之间的关系"><a href="#2、构造函数、实例、原型三者之间的关系" class="headerlink" title="2、构造函数、实例、原型三者之间的关系"></a>2、构造函数、实例、原型三者之间的关系</h2><p><img src="/2020/01/17/简述Js中的原型与原型链/三者关系.png" alt="三者关系"></p>
 <p>由图中我们可以很直观的看到三者之间的关系。</p>
 <p>p对象由Person构造函数构造</p>
 <p>p对象通过__proto__属性访问到Person对象原型</p>
@@ -159,7 +159,7 @@
 <p>constructor的作用：可以使得对象访问到对应的构造函数</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p.constructor);<span class="comment">// 打印  function Person()</span></span><br></pre></td></tr></table></figure>
 <p>知道以上的知识之后，我们还要了解，其实Person的原型也有原型，即存在Person.prototype.prototype，并且它是Person.prototype的原型，可以用图来直观了解这其中的关系，这便是一个简单的原型链。</p>
-<h2 id="3、原型链"><a href="#3、原型链" class="headerlink" title="3、原型链"></a>3、原型链</h2><p><img src="/2019/09/27/简述Js中的原型与原型链/原型链.png" alt="原型链"></p>
+<h2 id="3、原型链"><a href="#3、原型链" class="headerlink" title="3、原型链"></a>3、原型链</h2><p><img src="/2020/01/17/简述Js中的原型与原型链/原型链.png" alt="原型链"></p>
 <h2 id="4、原型链中的搜索规则"><a href="#4、原型链中的搜索规则" class="headerlink" title="4、原型链中的搜索规则"></a>4、原型链中的搜索规则</h2><p>了解了 <strong>构造函数-实例-原型对象</strong> 三者之间的关系后，接下来我们来解释一下为什么实例对象可以访问原型对象中的成员。</p>
 <p>每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性</p>
 <ul>
@@ -185,7 +185,7 @@
             <div class="post-copyright">
     <div class="content">
         <p>最后更新： 2019年09月27日 10:24</p>
-        <p>原始链接： <a class="post-url" href="/2019/09/27/简述Js中的原型与原型链/" title="简述Js中的原型与原型链">https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/</a></p>
+        <p>原始链接： <a class="post-url" href="/2020/01/17/简述Js中的原型与原型链/" title="简述Js中的原型与原型链">https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/</a></p>
         <footer>
             <a href="https://HowlCN1997.github.io">
                 <img src="/images/logo.png" alt="HowlCN">
@@ -242,7 +242,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557333974019&di=1ddcc81ffcdf05c50755c762a4524f13&imgtype=0&src=http%3A%2F%2Fimage.bubuko.com%2Finfo%2F201803%2F20180304202824554437.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557333974019&di=1ddcc81ffcdf05c50755c762a4524f13&imgtype=0&src=http%3A%2F%2Fimage.bubuko.com%2Finfo%2F201803%2F20180304202824554437.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -252,22 +252,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/&title=《简述Js中的原型与原型链》 — Howl&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简述Js中的原型与原型链》 — Howl&url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/&via=https://HowlCN1997.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简述Js中的原型与原型链》 — Howl&url=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/&via=https://HowlCN1997.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -277,7 +277,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2019/09/27/简述Js中的原型与原型链/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2020/01/17/简述Js中的原型与原型链/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -309,19 +309,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/09/27/Git和Gitlab/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          使用GitLab
-        
-      </span>
-    </a>
   
-  
-    <a href="/2019/09/27/浅析Javascript中的冒泡机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Javascript中的冒泡机制</span>
+    <a href="/2020/01/17/关于input禁用中文输入法的问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">关于input禁用中文输入法的问题</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -338,10 +328,10 @@
     <div id="footer-info" class="inner">
       
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -350,7 +340,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2019 HowlCN<br>
+      &copy; 2020 HowlCN<br>
       </p>
     </div>
   </div>
@@ -409,7 +399,7 @@
             </li>
             
             <li>
-                <a href="/about">
+                <a  href="/about">
                     <i class="fa fa-user"></i><span>关于</span>
                 </a>
             </li>
