@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Taro Next Cli | Howl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HowlCN1997,HowlCN1997 Blog,HowlCN,HowlCN Blog">
+  
+  <meta name="description" content="Taro Next Cli—— 一个Taro 脚手架 前言这段时间用Taro开发微信小程序，有了一些架构设计、适配、错误兼容等方案，每一次新开一个项目都要将之前的代码copy一份并重新配置，这个过程是机械且繁琐的，所以想构建一个脚手架来帮我们快速进行配置。 除此之外，还希望能讲Layout（布局组件）、LayoutHeader（自定义头部导航栏）、LayoutTabbar（自定义底部导航栏）、Dr">
+<meta name="keywords" content="Taro,Nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Taro Next Cli">
+<meta property="og:url" content="https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/index.html">
+<meta property="og:site_name" content="Howl">
+<meta property="og:description" content="Taro Next Cli—— 一个Taro 脚手架 前言这段时间用Taro开发微信小程序，有了一些架构设计、适配、错误兼容等方案，每一次新开一个项目都要将之前的代码copy一份并重新配置，这个过程是机械且繁琐的，所以想构建一个脚手架来帮我们快速进行配置。 除此之外，还希望能讲Layout（布局组件）、LayoutHeader（自定义头部导航栏）、LayoutTabbar（自定义底部导航栏）、Dr">
+<meta property="og:locale" content="en zh-cn">
+<meta property="og:updated_time" content="2020-08-24T16:04:53.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Taro Next Cli">
+<meta name="twitter:description" content="Taro Next Cli—— 一个Taro 脚手架 前言这段时间用Taro开发微信小程序，有了一些架构设计、适配、错误兼容等方案，每一次新开一个项目都要将之前的代码copy一份并重新配置，这个过程是机械且繁琐的，所以想构建一个脚手架来帮我们快速进行配置。 除此之外，还希望能讲Layout（布局组件）、LayoutHeader（自定义头部导航栏）、LayoutTabbar（自定义底部导航栏）、Dr">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HowlCN</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="https://HowlCN1997.github.io">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a target="_blank" href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>文章</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HowlCN
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录学习及开发过程的问题与心得
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HowlCN" target="_blank" href="//HowlCN1997.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/HowlCN1997/HowlCN1997.github.io">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo"  href="/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter"  href="/">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Taro Next Cli" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Taro Next Cli
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-08-15
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Taro-Next-Cli"><a href="#Taro-Next-Cli" class="headerlink" title="Taro Next Cli"></a>Taro Next Cli</h1><p>—— 一个Taro 脚手架</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这段时间用Taro开发微信小程序，有了一些架构设计、适配、错误兼容等方案，每一次新开一个项目都要将之前的代码copy一份并重新配置，这个过程是机械且繁琐的，所以想构建一个脚手架来帮我们快速进行配置。</p>
+<p>除此之外，还希望能讲Layout（布局组件）、<code>LayoutHeader</code>（自定义头部导航栏）、<code>LayoutTabbar</code>（自定义底部导航栏）、<code>DragList</code>（下拉刷新下拉加载）优化后单独拎成<code>UI</code>组件库，将此<code>UI</code>组件库完善并集成到脚手架中。让用脚手架创建的项目做到<code>“只关心业务”</code>的能力。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><p>本次的脚手架需要做的事：</p>
+<blockquote>
+<p>完成 ———&gt; 未开始</p>
+<p> 🌝🌖🌗🌘🌑</p>
+</blockquote>
+<ol>
+<li>配置阶段<ul>
+<li>项目信息基本配置 🌝</li>
+<li>css扩展语言选择 🌑</li>
+<li>项目模板选择 🌓</li>
+</ul>
+</li>
+<li>开发阶段<ul>
+<li>本地mock server 🌑</li>
+<li>代码热更新</li>
+</ul>
+</li>
+<li>测试阶段<ul>
+<li>执行测试脚本 🌑</li>
+<li>生成测试报告 🌑</li>
+</ul>
+</li>
+<li>部署阶段<ul>
+<li>自动化部署</li>
+</ul>
+</li>
+</ol>
+<p>配合本次脚手架构建要做的事：</p>
+<ol>
+<li>Taro3.x 架构设计</li>
+<li>Taro2.x 组件升级到Taro3.x并优化</li>
+<li>npm发布</li>
+</ol>
+<h3 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h3><blockquote>
+<p>本节仅以简单的构建流程为例，大家可以以此入门</p>
+</blockquote>
+<p>主流程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置脚手架入口 =&gt; 配置“创建项目”命令 =&gt; 人机交互设置项目基本配置 =&gt; 拉取相关基础项目 =&gt; 更新package.json =&gt; 安装相关依赖</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 项目文件结构</span><br><span class="line">├── bin                 </span><br><span class="line">|   └── cli.js         脚手架入口文件    </span><br><span class="line">├── lib                   </span><br><span class="line">|   ├── download.js    项目下载相关操作     </span><br><span class="line">|   ├── exec.js        进程执行相关操作     </span><br><span class="line">|   ├── file.js        文件相关操作     </span><br><span class="line">|   ├── install.js     安装相关操作       </span><br><span class="line">|   └── utils.js       工具包     </span><br><span class="line">├── package.json                  </span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
+<h4 id="配置脚手架入口"><a href="#配置脚手架入口" class="headerlink" title="配置脚手架入口"></a>配置脚手架入口</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"bin"</span>: &#123;</span><br><span class="line">        <span class="attr">"biu"</span>: <span class="string">"./bin/cli.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="配置-“创建项目”-命令"><a href="#配置-“创建项目”-命令" class="headerlink" title="配置 “创建项目” 命令"></a>配置 “创建项目” 命令</h4><p>这里要借助<a href="https://github.com/tj/commander.js" target="_blank" rel="noopener">commander.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cli.js</span></span><br><span class="line"><span class="keyword">const</span> program = <span class="built_in">require</span>(<span class="string">"commander"</span>);</span><br><span class="line"><span class="comment">// command注册命令</span></span><br><span class="line">program.command(<span class="string">"init &lt;projectName&gt;"</span>).<span class="comment">/* 中间操作 */</span>.action();</span><br><span class="line"><span class="comment">// 当在命令行中输入 biu init myapp 便会执行相关命令，并将 "myapp" 赋值给projectName</span></span><br></pre></td></tr></table></figure>
+<h4 id="人机交互设置项目基本配置"><a href="#人机交互设置项目基本配置" class="headerlink" title="人机交互设置项目基本配置"></a>人机交互设置项目基本配置</h4><p>这里要借助 <a href="https://github.com/SBoudrias/Inquirer.js#readme" target="_blank" rel="noopener">inquirer.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cli.js</span></span><br><span class="line"><span class="keyword">const</span> program = <span class="built_in">require</span>(<span class="string">"commander"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> QUESTIONS = [</span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">"input"</span>,</span><br><span class="line">        name: <span class="string">"author"</span>,</span><br><span class="line">        message: <span class="string">"请输入作者的名称:"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">"list"</span>,</span><br><span class="line">        name: <span class="string">"style"</span>,</span><br><span class="line">        message: <span class="string">"样式预处理语言:"</span>,</span><br><span class="line">        choices: [</span><br><span class="line">            &#123; <span class="attr">name</span>: <span class="string">"scss"</span>, <span class="attr">value</span>: <span class="number">1</span> &#125;,</span><br><span class="line">            &#123; <span class="attr">name</span>: <span class="string">"less"</span>, <span class="attr">value</span>: <span class="number">2</span> &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">"confirm"</span>,</span><br><span class="line">        name: <span class="string">"isOk"</span>,</span><br><span class="line">        message: <span class="string">"请确认输入是否ok?"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line">program.command(<span class="string">"init &lt;projectName&gt;"</span>).<span class="comment">/* 中间操作 */</span>.action(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    inquirer.prompt(QUESTIONS).then(<span class="function">(<span class="params">&#123;author,style,isOk&#125;</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">// 再次做出相应操作</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1.拉取相关基础项目</span></span><br><span class="line">        <span class="comment">// 2.更新package.json</span></span><br><span class="line">        <span class="comment">// 3.安装依赖</span></span><br><span class="line">        <span class="built_in">console</span>.log(author,style,isOk);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="拉取相关基础项目"><a href="#拉取相关基础项目" class="headerlink" title="拉取相关基础项目"></a>拉取相关基础项目</h4><p>这里要借助 <code>download-git-repo</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// download.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; promisify &#125; = <span class="built_in">require</span>(<span class="string">"util"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 从git仓库上下载项目到本地</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; repo git仓库地址</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; desc 本地的路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> clone = <span class="function"><span class="keyword">function</span> (<span class="params">repo, desc</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> download = promisify(<span class="built_in">require</span>(<span class="string">"download-git-repo"</span>));</span><br><span class="line">  download(repo, desc);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  clone</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cli.js</span></span><br><span class="line"><span class="keyword">await</span> clone(<span class="string">"github.com:Howlcn1997/taro-next-base"</span>, projectName);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意这里仓库的地址要去除 git@ 或 http://</span></span><br></pre></td></tr></table></figure>
+<h4 id="更新package-json"><a href="#更新package-json" class="headerlink" title="更新package.json"></a>更新package.json</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs-extra"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 更新文件内容.</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; filePath</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&#125; contents</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> updateFile = <span class="function">(<span class="params">filePath, contents</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (fs.existsSync(filePath)) &#123;</span><br><span class="line">    <span class="keyword">const</span> fileContent = <span class="built_in">Object</span>.assign(&#123;&#125;, <span class="built_in">require</span>(filePath), contents);</span><br><span class="line">    fs.writeJSONSync(filePath, fileContent, &#123; <span class="attr">spaces</span>: <span class="string">"\t"</span> &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`无法找到此路径: <span class="subst">$&#123;filePath&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  updateFile</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cli.js</span></span><br><span class="line">updateFile(packageJson, &#123;</span><br><span class="line">    name: projectName,</span><br><span class="line">    author,</span><br><span class="line">    version: version,</span><br><span class="line">    description: description,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="安装相关依赖"><a href="#安装相关依赖" class="headerlink" title="安装相关依赖"></a>安装相关依赖</h4><p>这里要借助 <a href="https://github.com/npm/node-which#readme" target="_blank" rel="noopener">which.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// exec.js</span></span><br><span class="line"><span class="keyword">const</span> childProcess = <span class="built_in">require</span>(<span class="string">"child_process"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开启子进程来执行命令</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; cmd 待执行的命令</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; args 命令执行时的参数.</span></span><br><span class="line"><span class="comment"> * @param &#123;Function&#125; fn 执行完成时的回调.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exec</span>(<span class="params">cmd, args = [], cb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> runner = childProcess.spawn(cmd, args, &#123;</span><br><span class="line">    stdio: <span class="string">"inherit"</span>,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  runner.on(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code</span>) </span>&#123;</span><br><span class="line">    cb &amp;&amp; cb(code);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  exec,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找系统中用于安装依赖包的命令</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findNpm</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> npms = [<span class="string">"tnpm"</span>, <span class="string">"cnpm"</span>, <span class="string">"npm"</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; npms.length; i++) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 查找环境变量下指定的可执行文件的第一个实例</span></span><br><span class="line">      which.sync(npms[i]);</span><br><span class="line">      <span class="keyword">return</span> npms[i];</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(chalk.red(<span class="string">"请先安装 npm"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  findNpm,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// install.js</span></span><br><span class="line"><span class="keyword">const</span> which = <span class="built_in">require</span>(<span class="string">"which"</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; exec &#125; = <span class="built_in">require</span>(<span class="string">"./exec"</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; findNpm &#125; = <span class="built_in">require</span>(<span class="string">"./utils"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 执行npm install命令, 安装项目依赖.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> install = <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> npm = findNpm();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"开始安装依赖..."</span>);</span><br><span class="line">    exec(which.sync(npm), [<span class="string">"install"</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"安装成功!"</span>);</span><br><span class="line">        cb &amp;&amp; cb();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    install,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cli.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将node工作目录更改成构建的项目根目录下</span></span><br><span class="line"><span class="keyword">const</span> projectPath = path.resolve(projectName);</span><br><span class="line">process.chdir(projectPath);</span><br><span class="line"><span class="comment">// 执行安装命令</span></span><br><span class="line">install();</span><br></pre></td></tr></table></figure>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 命令行</span><br><span class="line">npm link</span><br><span class="line">biu init demo</span><br></pre></td></tr></table></figure>
+<h4 id="额外的库"><a href="#额外的库" class="headerlink" title="额外的库"></a>额外的库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ora.js  // 控制台加载动画</span><br><span class="line">chalk.js  // 控制台打印美化</span><br></pre></td></tr></table></figure>
+<h3 id="基础模板项目"><a href="#基础模板项目" class="headerlink" title="基础模板项目"></a>基础模板项目</h3><p>项目文件结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── config                 配置目录</span><br><span class="line">|   ├── dev.js             开发时配置</span><br><span class="line">|   ├── index.js           默认配置</span><br><span class="line">|   └── prod.js            打包时配置</span><br><span class="line">├── src                    源码目录</span><br><span class="line">|   ├── pages              页面文件目录</span><br><span class="line">|   |   └── index          index 页面目录</span><br><span class="line">|   |       ├── index.js   index 页面逻辑</span><br><span class="line">|   |       └── index.css  index 页面样式</span><br><span class="line">|   ├── styles             公共通用样式</span><br><span class="line">|   ├── app.css            项目总通用样式</span><br><span class="line">|   └── app.js             项目入口文件</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
+<p>关于 Layout等组件、session缓存、初始页面分发方案不在此赘述</p>
+<h3 id="Taro2-x-升级"><a href="#Taro2-x-升级" class="headerlink" title="Taro2.x 升级"></a>Taro2.x 升级</h3><p><a href="https://taro-docs.jd.com/taro/docs/migration" target="_blank" rel="noopener">从旧版本迁移到 Taro Next</a></p>
+<p>注意：若不使用了Nervjs，就不要引入</p>
+<h3 id="npm发布脚手架"><a href="#npm发布脚手架" class="headerlink" title="npm发布脚手架"></a>npm发布脚手架</h3><ol>
+<li><p>先注册一个<code>npm</code>账号并登录</p>
+</li>
+<li><p>去除脚手架项目中多余的依赖配置</p>
+</li>
+<li><p>确认<code>package.json</code>中name在<code>npm</code>中无重名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">简单方法：打开npm，直接搜索此name，若无结果，则无重名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>写好<code>readme.md</code></p>
+</li>
+<li><p>切换源至<code>npm</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nrm ls // 查看所有源</span><br><span class="line">nrm use 源名 // 切换源</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm i taro-next-cli -g</span><br><span class="line">----------------------</span><br><span class="line">biu init firstDemo</span><br><span class="line">----------------------</span><br><span class="line">cd firstDemo</span><br><span class="line">----------------------</span><br><span class="line">npm run dev:weapp</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="后期"><a href="#后期" class="headerlink" title="后期"></a>后期</h2><p>暂时只是有一些基础功能</p>
+<p>模板也只有一套，组件还没抽离成单独的包，还有若干需要优化的点。Nodejs暂时还没系统性学习。暂时的应急版本只是相应业务上的需求。之后会持续将集成方案补全到基础项目中。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2020年08月25日 00:04</p>
+        <p>原始链接： <a class="post-url" href="/2020/08/15/Taro Next Cli/" title="Taro Next Cli">https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/</a></p>
+        <footer>
+            <a href="https://HowlCN1997.github.io">
+                <img src="/images/logo.png" alt="HowlCN">
+                HowlCN
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/&title=《Taro Next Cli》 — Howl&pic=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598295149858&di=814f03b70c1bbc84dbf2802172bf8bf1&imgtype=0&src=http%3A%2F%2Fimg.yzt-tools.com%2F20190424%2Ff2957bb1278f80b2de8514fb760eb82a.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cw_600%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/&title=《Taro Next Cli》 — Howl&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Taro Next Cli》 — Howl&url=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/&via=https://HowlCN1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://HowlCN1997.github.io/2020/08/15/Taro Next Cli/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Taro/" class="color5">Taro</a>
+      
+    <a href="/tags/Nodejs/" class="color2">Nodejs</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Taro-Next-Cli"><span class="post-toc-text">Taro Next Cli</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Flag"><span class="post-toc-text">Flag</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#脚手架"><span class="post-toc-text">脚手架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置脚手架入口"><span class="post-toc-text">配置脚手架入口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置-“创建项目”-命令"><span class="post-toc-text">配置 “创建项目” 命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#人机交互设置项目基本配置"><span class="post-toc-text">人机交互设置项目基本配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拉取相关基础项目"><span class="post-toc-text">拉取相关基础项目</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#更新package-json"><span class="post-toc-text">更新package.json</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装相关依赖"><span class="post-toc-text">安装相关依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#验证"><span class="post-toc-text">验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#额外的库"><span class="post-toc-text">额外的库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础模板项目"><span class="post-toc-text">基础模板项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Taro2-x-升级"><span class="post-toc-text">Taro2.x 升级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm发布脚手架"><span class="post-toc-text">npm发布脚手架</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后期"><span class="post-toc-text">后期</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/13/Hello React/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Hello React</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 HowlCN<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://HowlCN1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Hook/" style="font-size: 10px;">Hook</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React/" style="font-size: 14px;">React</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Taro/" style="font-size: 10px;">Taro</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="https://HowlCN1997.github.io">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="/archives">
+                    <i class="fa fa-archive"></i><span>文章</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Hook/" style="font-size: 10px;">Hook</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Ps/" style="font-size: 10px;">Ps</a> <a href="/tags/React/" style="font-size: 14px;">React</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/Taro/" style="font-size: 10px;">Taro</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/搭建/" style="font-size: 14px;">搭建</a> <a href="/tags/笔记/" style="font-size: 18px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
